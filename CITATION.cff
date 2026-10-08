@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this educational and experimental software, please cite it."
+type: software
+title: "Information, Compression and Communication Lab"
+version: 1.0.0
+date-released: 2026-10-08
+authors:
+  - family-names: "Bagheri-Shouraki"
+    given-names: "Navid"
+license: MIT
+abstract: "Reproducible experiments in information algebra, coding, rate-distortion, rare events, information estimation and practical learned image compression."
+keywords:
+  - information theory
+  - lossless compression
+  - channel coding
+  - rate distortion
+  - information estimation
+  - learned image compression

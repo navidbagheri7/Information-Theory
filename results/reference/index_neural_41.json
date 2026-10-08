@@ -1,0 +1,5573 @@
+{
+  "schema": 1,
+  "config": {
+    "schema": 1,
+    "name": "reference",
+    "seeds": [
+      41,
+      42,
+      43
+    ],
+    "cases": [
+      {
+        "family": "foundations",
+        "id": "joint_entropy",
+        "task": "joint_entropy",
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "parity_2",
+        "task": "parity",
+        "variables": 2,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "parity_3",
+        "task": "parity",
+        "variables": 3,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "parity_10",
+        "task": "parity",
+        "variables": 10,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "mix_0",
+        "task": "mixing",
+        "fraction": 0,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "mix_25",
+        "task": "mixing",
+        "fraction": 0.25,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "mix_50",
+        "task": "mixing",
+        "fraction": 0.5,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "mix_75",
+        "task": "mixing",
+        "fraction": 0.75,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "mix_100",
+        "task": "mixing",
+        "fraction": 1,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "fixed_mass_extrema",
+        "task": "entropy_extrema",
+        "alphabet": 7,
+        "first": 0.2,
+        "last": 0.1,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "data_processing_0",
+        "task": "data_processing",
+        "first_crossover": 0.1,
+        "second_crossover": 0,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "data_processing_10",
+        "task": "data_processing",
+        "first_crossover": 0.1,
+        "second_crossover": 0.1,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "data_processing_30",
+        "task": "data_processing",
+        "first_crossover": 0.1,
+        "second_crossover": 0.3,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "data_processing_50",
+        "task": "data_processing",
+        "first_crossover": 0.1,
+        "second_crossover": 0.5,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "fano_0",
+        "task": "fano",
+        "alphabet": 4,
+        "error": 0,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "fano_10",
+        "task": "fano",
+        "alphabet": 4,
+        "error": 0.1,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "fano_30",
+        "task": "fano",
+        "alphabet": 4,
+        "error": 0.3,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "fano_75",
+        "task": "fano",
+        "alphabet": 4,
+        "error": 0.75,
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "ordinary_huffman",
+        "task": "weighted_huffman",
+        "costs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "weighted_huffman",
+        "task": "weighted_huffman",
+        "costs": [
+          1,
+          2,
+          1,
+          3,
+          1,
+          2,
+          4
+        ],
+        "stochastic": false
+      },
+      {
+        "family": "foundations",
+        "id": "strictness_counterexample",
+        "task": "strictness_counterexample",
+        "stochastic": false
+      },
+      {
+        "family": "sources",
+        "id": "markov_transformations",
+        "task": "markov_transformations",
+        "stochastic": false
+      },
+      {
+        "family": "sources",
+        "id": "uniform_16",
+        "task": "typicality",
+        "probability": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "blocklength": 16,
+        "trials": 10000,
+        "weak_tolerance": 0.1,
+        "strong_tolerance": 0.2
+      },
+      {
+        "family": "sources",
+        "id": "uniform_64",
+        "task": "typicality",
+        "probability": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "blocklength": 64,
+        "trials": 10000,
+        "weak_tolerance": 0.1,
+        "strong_tolerance": 0.2
+      },
+      {
+        "family": "sources",
+        "id": "uniform_256",
+        "task": "typicality",
+        "probability": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "blocklength": 256,
+        "trials": 10000,
+        "weak_tolerance": 0.1,
+        "strong_tolerance": 0.2
+      },
+      {
+        "family": "sources",
+        "id": "uniform_1024",
+        "task": "typicality",
+        "probability": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "blocklength": 1024,
+        "trials": 10000,
+        "weak_tolerance": 0.1,
+        "strong_tolerance": 0.2
+      },
+      {
+        "family": "sources",
+        "id": "skewed_16",
+        "task": "typicality",
+        "probability": [
+          0.6,
+          0.25,
+          0.1,
+          0.05
+        ],
+        "blocklength": 16,
+        "trials": 10000,
+        "weak_tolerance": 0.1,
+        "strong_tolerance": 0.2
+      },
+      {
+        "family": "sources",
+        "id": "skewed_64",
+        "task": "typicality",
+        "probability": [
+          0.6,
+          0.25,
+          0.1,
+          0.05
+        ],
+        "blocklength": 64,
+        "trials": 10000,
+        "weak_tolerance": 0.1,
+        "strong_tolerance": 0.2
+      },
+      {
+        "family": "sources",
+        "id": "skewed_256",
+        "task": "typicality",
+        "probability": [
+          0.6,
+          0.25,
+          0.1,
+          0.05
+        ],
+        "blocklength": 256,
+        "trials": 10000,
+        "weak_tolerance": 0.1,
+        "strong_tolerance": 0.2
+      },
+      {
+        "family": "sources",
+        "id": "skewed_1024",
+        "task": "typicality",
+        "probability": [
+          0.6,
+          0.25,
+          0.1,
+          0.05
+        ],
+        "blocklength": 1024,
+        "trials": 10000,
+        "weak_tolerance": 0.1,
+        "strong_tolerance": 0.2
+      },
+      {
+        "family": "channels",
+        "id": "bsc_0",
+        "task": "bsc",
+        "noise": 0,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bsc_5",
+        "task": "bsc",
+        "noise": 0.05,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bsc_10",
+        "task": "bsc",
+        "noise": 0.1,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bsc_25",
+        "task": "bsc",
+        "noise": 0.25,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bsc_50",
+        "task": "bsc",
+        "noise": 0.5,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bsc_75",
+        "task": "bsc",
+        "noise": 0.75,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bsc_95",
+        "task": "bsc",
+        "noise": 0.95,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bsc_100",
+        "task": "bsc",
+        "noise": 1,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bec_0",
+        "task": "bec",
+        "noise": 0,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bec_5",
+        "task": "bec",
+        "noise": 0.05,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bec_10",
+        "task": "bec",
+        "noise": 0.1,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bec_25",
+        "task": "bec",
+        "noise": 0.25,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bec_50",
+        "task": "bec",
+        "noise": 0.5,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bec_75",
+        "task": "bec",
+        "noise": 0.75,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bec_95",
+        "task": "bec",
+        "noise": 0.95,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "bec_100",
+        "task": "bec",
+        "noise": 1,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "z_channel_0",
+        "task": "z_channel",
+        "noise": 0,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "z_channel_5",
+        "task": "z_channel",
+        "noise": 0.05,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "z_channel_10",
+        "task": "z_channel",
+        "noise": 0.1,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "z_channel_25",
+        "task": "z_channel",
+        "noise": 0.25,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "z_channel_50",
+        "task": "z_channel",
+        "noise": 0.5,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "z_channel_75",
+        "task": "z_channel",
+        "noise": 0.75,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "z_channel_95",
+        "task": "z_channel",
+        "noise": 0.95,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "z_channel_100",
+        "task": "z_channel",
+        "noise": 1,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "course_channel1",
+        "task": "course_channel1",
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "course_channel2",
+        "task": "course_channel2",
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "weakly_symmetric",
+        "task": "weakly_symmetric",
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_32_1",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 32,
+        "block_error": 0.001,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_32_10",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 32,
+        "block_error": 0.01,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_32_100",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 32,
+        "block_error": 0.1,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_128_1",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 128,
+        "block_error": 0.001,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_128_10",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 128,
+        "block_error": 0.01,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_128_100",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 128,
+        "block_error": 0.1,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_512_1",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 512,
+        "block_error": 0.001,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_512_10",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 512,
+        "block_error": 0.01,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_512_100",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 512,
+        "block_error": 0.1,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_2048_1",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 2048,
+        "block_error": 0.001,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_2048_10",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 2048,
+        "block_error": 0.01,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "finite_length_2048_100",
+        "task": "finite_length",
+        "noise": 0.1,
+        "blocklength": 2048,
+        "block_error": 0.1,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "jammer_25_unknown",
+        "task": "jammer",
+        "free_probability": 0.25,
+        "noise": 0.1,
+        "decoder_knows": false,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "jammer_50_unknown",
+        "task": "jammer",
+        "free_probability": 0.5,
+        "noise": 0.1,
+        "decoder_knows": false,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "jammer_75_unknown",
+        "task": "jammer",
+        "free_probability": 0.75,
+        "noise": 0.1,
+        "decoder_knows": false,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "jammer_100_unknown",
+        "task": "jammer",
+        "free_probability": 1,
+        "noise": 0.1,
+        "decoder_knows": false,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "jammer_25_known",
+        "task": "jammer",
+        "free_probability": 0.25,
+        "noise": 0.1,
+        "decoder_knows": true,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "jammer_50_known",
+        "task": "jammer",
+        "free_probability": 0.5,
+        "noise": 0.1,
+        "decoder_knows": true,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "jammer_75_known",
+        "task": "jammer",
+        "free_probability": 0.75,
+        "noise": 0.1,
+        "decoder_knows": true,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "jammer_100_known",
+        "task": "jammer",
+        "free_probability": 1,
+        "noise": 0.1,
+        "decoder_knows": true,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "water_filling_0p25",
+        "task": "water_filling",
+        "noise_variances": [
+          0.5,
+          1,
+          2,
+          4
+        ],
+        "total_power": 0.25,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "water_filling_1",
+        "task": "water_filling",
+        "noise_variances": [
+          0.5,
+          1,
+          2,
+          4
+        ],
+        "total_power": 1,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "water_filling_4",
+        "task": "water_filling",
+        "noise_variances": [
+          0.5,
+          1,
+          2,
+          4
+        ],
+        "total_power": 4,
+        "stochastic": false
+      },
+      {
+        "family": "channels",
+        "id": "water_filling_16",
+        "task": "water_filling",
+        "noise_variances": [
+          0.5,
+          1,
+          2,
+          4
+        ],
+        "total_power": 16,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_00",
+        "task": "bernoulli_hamming",
+        "beta": 0,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_01",
+        "task": "bernoulli_hamming",
+        "beta": 0.05,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_02",
+        "task": "bernoulli_hamming",
+        "beta": 0.1,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_03",
+        "task": "bernoulli_hamming",
+        "beta": 0.2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_04",
+        "task": "bernoulli_hamming",
+        "beta": 0.3,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_05",
+        "task": "bernoulli_hamming",
+        "beta": 0.5,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_06",
+        "task": "bernoulli_hamming",
+        "beta": 0.7,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_07",
+        "task": "bernoulli_hamming",
+        "beta": 0.9,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_08",
+        "task": "bernoulli_hamming",
+        "beta": 1.2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_09",
+        "task": "bernoulli_hamming",
+        "beta": 1.6,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_10",
+        "task": "bernoulli_hamming",
+        "beta": 2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_11",
+        "task": "bernoulli_hamming",
+        "beta": 3,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_12",
+        "task": "bernoulli_hamming",
+        "beta": 4,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_13",
+        "task": "bernoulli_hamming",
+        "beta": 6,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_14",
+        "task": "bernoulli_hamming",
+        "beta": 8,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_15",
+        "task": "bernoulli_hamming",
+        "beta": 12,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_16",
+        "task": "bernoulli_hamming",
+        "beta": 16,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "bernoulli_hamming_17",
+        "task": "bernoulli_hamming",
+        "beta": 24,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.5
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_00",
+        "task": "bernoulli_hamming",
+        "beta": 0,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_01",
+        "task": "bernoulli_hamming",
+        "beta": 0.05,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_02",
+        "task": "bernoulli_hamming",
+        "beta": 0.1,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_03",
+        "task": "bernoulli_hamming",
+        "beta": 0.2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_04",
+        "task": "bernoulli_hamming",
+        "beta": 0.3,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_05",
+        "task": "bernoulli_hamming",
+        "beta": 0.5,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_06",
+        "task": "bernoulli_hamming",
+        "beta": 0.7,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_07",
+        "task": "bernoulli_hamming",
+        "beta": 0.9,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_08",
+        "task": "bernoulli_hamming",
+        "beta": 1.2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_09",
+        "task": "bernoulli_hamming",
+        "beta": 1.6,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_10",
+        "task": "bernoulli_hamming",
+        "beta": 2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_11",
+        "task": "bernoulli_hamming",
+        "beta": 3,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_12",
+        "task": "bernoulli_hamming",
+        "beta": 4,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_13",
+        "task": "bernoulli_hamming",
+        "beta": 6,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_14",
+        "task": "bernoulli_hamming",
+        "beta": 8,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_15",
+        "task": "bernoulli_hamming",
+        "beta": 12,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_16",
+        "task": "bernoulli_hamming",
+        "beta": 16,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "biased_hamming_17",
+        "task": "bernoulli_hamming",
+        "beta": 24,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false,
+        "p_one": 0.2
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_00",
+        "task": "asymmetric_forbidden",
+        "beta": 0,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_01",
+        "task": "asymmetric_forbidden",
+        "beta": 0.05,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_02",
+        "task": "asymmetric_forbidden",
+        "beta": 0.1,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_03",
+        "task": "asymmetric_forbidden",
+        "beta": 0.2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_04",
+        "task": "asymmetric_forbidden",
+        "beta": 0.3,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_05",
+        "task": "asymmetric_forbidden",
+        "beta": 0.5,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_06",
+        "task": "asymmetric_forbidden",
+        "beta": 0.7,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_07",
+        "task": "asymmetric_forbidden",
+        "beta": 0.9,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_08",
+        "task": "asymmetric_forbidden",
+        "beta": 1.2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_09",
+        "task": "asymmetric_forbidden",
+        "beta": 1.6,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_10",
+        "task": "asymmetric_forbidden",
+        "beta": 2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_11",
+        "task": "asymmetric_forbidden",
+        "beta": 3,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_12",
+        "task": "asymmetric_forbidden",
+        "beta": 4,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_13",
+        "task": "asymmetric_forbidden",
+        "beta": 6,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_14",
+        "task": "asymmetric_forbidden",
+        "beta": 8,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_15",
+        "task": "asymmetric_forbidden",
+        "beta": 12,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_16",
+        "task": "asymmetric_forbidden",
+        "beta": 16,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "asymmetric_forbidden_17",
+        "task": "asymmetric_forbidden",
+        "beta": 24,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_00",
+        "task": "four_pam",
+        "beta": 0,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_01",
+        "task": "four_pam",
+        "beta": 0.05,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_02",
+        "task": "four_pam",
+        "beta": 0.1,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_03",
+        "task": "four_pam",
+        "beta": 0.2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_04",
+        "task": "four_pam",
+        "beta": 0.3,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_05",
+        "task": "four_pam",
+        "beta": 0.5,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_06",
+        "task": "four_pam",
+        "beta": 0.7,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_07",
+        "task": "four_pam",
+        "beta": 0.9,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_08",
+        "task": "four_pam",
+        "beta": 1.2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_09",
+        "task": "four_pam",
+        "beta": 1.6,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_10",
+        "task": "four_pam",
+        "beta": 2,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_11",
+        "task": "four_pam",
+        "beta": 3,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_12",
+        "task": "four_pam",
+        "beta": 4,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_13",
+        "task": "four_pam",
+        "beta": 6,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_14",
+        "task": "four_pam",
+        "beta": 8,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_15",
+        "task": "four_pam",
+        "beta": 12,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_16",
+        "task": "four_pam",
+        "beta": 16,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "four_pam_17",
+        "task": "four_pam",
+        "beta": 24,
+        "tolerance": 1e-08,
+        "accelerate": false,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_00",
+        "task": "discretized_gaussian",
+        "beta": 0,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_01",
+        "task": "discretized_gaussian",
+        "beta": 0.05,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_02",
+        "task": "discretized_gaussian",
+        "beta": 0.1,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_03",
+        "task": "discretized_gaussian",
+        "beta": 0.2,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_04",
+        "task": "discretized_gaussian",
+        "beta": 0.3,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_05",
+        "task": "discretized_gaussian",
+        "beta": 0.5,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_06",
+        "task": "discretized_gaussian",
+        "beta": 0.7,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_07",
+        "task": "discretized_gaussian",
+        "beta": 0.9,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_08",
+        "task": "discretized_gaussian",
+        "beta": 1.2,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_09",
+        "task": "discretized_gaussian",
+        "beta": 1.6,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_10",
+        "task": "discretized_gaussian",
+        "beta": 2,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_11",
+        "task": "discretized_gaussian",
+        "beta": 3,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_12",
+        "task": "discretized_gaussian",
+        "beta": 4,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_13",
+        "task": "discretized_gaussian",
+        "beta": 6,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_14",
+        "task": "discretized_gaussian",
+        "beta": 8,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_15",
+        "task": "discretized_gaussian",
+        "beta": 12,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_16",
+        "task": "discretized_gaussian",
+        "beta": 16,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "rate_distortion",
+        "id": "discretized_gaussian_17",
+        "task": "discretized_gaussian",
+        "beta": 24,
+        "tolerance": 1e-06,
+        "accelerate": true,
+        "stochastic": false
+      },
+      {
+        "family": "coding",
+        "id": "uncoded_m1",
+        "method": "uncoded",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": -1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "uncoded_1",
+        "method": "uncoded",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "uncoded_3",
+        "method": "uncoded",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 3,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "uncoded_5",
+        "method": "uncoded",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 5,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "uncoded_7",
+        "method": "uncoded",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 7,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "repetition3_m1",
+        "method": "repetition3",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": -1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "repetition3_1",
+        "method": "repetition3",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "repetition3_3",
+        "method": "repetition3",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 3,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "repetition3_5",
+        "method": "repetition3",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 5,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "repetition3_7",
+        "method": "repetition3",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 7,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "hamming_hard_m1",
+        "method": "hamming_hard",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": -1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "hamming_hard_1",
+        "method": "hamming_hard",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "hamming_hard_3",
+        "method": "hamming_hard",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 3,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "hamming_hard_5",
+        "method": "hamming_hard",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 5,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "hamming_hard_7",
+        "method": "hamming_hard",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 7,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "hamming_soft_m1",
+        "method": "hamming_soft",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": -1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "hamming_soft_1",
+        "method": "hamming_soft",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "hamming_soft_3",
+        "method": "hamming_soft",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 3,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "hamming_soft_5",
+        "method": "hamming_soft",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 5,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "hamming_soft_7",
+        "method": "hamming_soft",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 7,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "convolutional_m1",
+        "method": "convolutional",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": -1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "convolutional_1",
+        "method": "convolutional",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "convolutional_3",
+        "method": "convolutional",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 3,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "convolutional_5",
+        "method": "convolutional",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 5,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "convolutional_7",
+        "method": "convolutional",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 7,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "polar_sc_m1",
+        "method": "polar_sc",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": -1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "polar_sc_1",
+        "method": "polar_sc",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "polar_sc_3",
+        "method": "polar_sc",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 3,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "polar_sc_5",
+        "method": "polar_sc",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 5,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "polar_sc_7",
+        "method": "polar_sc",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 7,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "ldpc_bp_m1",
+        "method": "ldpc_bp",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": -1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "ldpc_bp_1",
+        "method": "ldpc_bp",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "ldpc_bp_3",
+        "method": "ldpc_bp",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 3,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "ldpc_bp_5",
+        "method": "ldpc_bp",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 5,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "ldpc_bp_7",
+        "method": "ldpc_bp",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 7,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "ldpc_min_sum_m1",
+        "method": "ldpc_min_sum",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": -1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "ldpc_min_sum_1",
+        "method": "ldpc_min_sum",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 1,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "ldpc_min_sum_3",
+        "method": "ldpc_min_sum",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 3,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "ldpc_min_sum_5",
+        "method": "ldpc_min_sum",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 5,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "coding",
+        "id": "ldpc_min_sum_7",
+        "method": "ldpc_min_sum",
+        "message_bits": 64,
+        "trials": 2048,
+        "ebn0_db": 7,
+        "batch_size": 256,
+        "max_iterations": 50,
+        "graph_seed": 991,
+        "design_erasure": 0.5
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_4096_huffman",
+        "task": "iid_biased",
+        "max_bytes": 4096,
+        "method": "huffman",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_4096_shannon",
+        "task": "iid_biased",
+        "max_bytes": 4096,
+        "method": "shannon",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_4096_arithmetic0",
+        "task": "iid_biased",
+        "max_bytes": 4096,
+        "method": "arithmetic0",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_4096_arithmetic1",
+        "task": "iid_biased",
+        "max_bytes": 4096,
+        "method": "arithmetic1",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_4096_lz77",
+        "task": "iid_biased",
+        "max_bytes": 4096,
+        "method": "lz77",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_4096_deflate",
+        "task": "iid_biased",
+        "max_bytes": 4096,
+        "method": "deflate",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_4096_zstd",
+        "task": "iid_biased",
+        "max_bytes": 4096,
+        "method": "zstd",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_65536_huffman",
+        "task": "iid_biased",
+        "max_bytes": 65536,
+        "method": "huffman",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_65536_shannon",
+        "task": "iid_biased",
+        "max_bytes": 65536,
+        "method": "shannon",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_65536_arithmetic0",
+        "task": "iid_biased",
+        "max_bytes": 65536,
+        "method": "arithmetic0",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_65536_arithmetic1",
+        "task": "iid_biased",
+        "max_bytes": 65536,
+        "method": "arithmetic1",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_65536_lz77",
+        "task": "iid_biased",
+        "max_bytes": 65536,
+        "method": "lz77",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_65536_deflate",
+        "task": "iid_biased",
+        "max_bytes": 65536,
+        "method": "deflate",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "iid_biased_65536_zstd",
+        "task": "iid_biased",
+        "max_bytes": 65536,
+        "method": "zstd",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_4096_huffman",
+        "task": "markov_binary",
+        "max_bytes": 4096,
+        "method": "huffman",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_4096_shannon",
+        "task": "markov_binary",
+        "max_bytes": 4096,
+        "method": "shannon",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_4096_arithmetic0",
+        "task": "markov_binary",
+        "max_bytes": 4096,
+        "method": "arithmetic0",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_4096_arithmetic1",
+        "task": "markov_binary",
+        "max_bytes": 4096,
+        "method": "arithmetic1",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_4096_lz77",
+        "task": "markov_binary",
+        "max_bytes": 4096,
+        "method": "lz77",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_4096_deflate",
+        "task": "markov_binary",
+        "max_bytes": 4096,
+        "method": "deflate",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_4096_zstd",
+        "task": "markov_binary",
+        "max_bytes": 4096,
+        "method": "zstd",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_65536_huffman",
+        "task": "markov_binary",
+        "max_bytes": 65536,
+        "method": "huffman",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_65536_shannon",
+        "task": "markov_binary",
+        "max_bytes": 65536,
+        "method": "shannon",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_65536_arithmetic0",
+        "task": "markov_binary",
+        "max_bytes": 65536,
+        "method": "arithmetic0",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_65536_arithmetic1",
+        "task": "markov_binary",
+        "max_bytes": 65536,
+        "method": "arithmetic1",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_65536_lz77",
+        "task": "markov_binary",
+        "max_bytes": 65536,
+        "method": "lz77",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_65536_deflate",
+        "task": "markov_binary",
+        "max_bytes": 65536,
+        "method": "deflate",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "markov_binary_65536_zstd",
+        "task": "markov_binary",
+        "max_bytes": 65536,
+        "method": "zstd",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_4096_huffman",
+        "task": "uniform_bytes",
+        "max_bytes": 4096,
+        "method": "huffman",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_4096_shannon",
+        "task": "uniform_bytes",
+        "max_bytes": 4096,
+        "method": "shannon",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_4096_arithmetic0",
+        "task": "uniform_bytes",
+        "max_bytes": 4096,
+        "method": "arithmetic0",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_4096_arithmetic1",
+        "task": "uniform_bytes",
+        "max_bytes": 4096,
+        "method": "arithmetic1",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_4096_lz77",
+        "task": "uniform_bytes",
+        "max_bytes": 4096,
+        "method": "lz77",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_4096_deflate",
+        "task": "uniform_bytes",
+        "max_bytes": 4096,
+        "method": "deflate",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_4096_zstd",
+        "task": "uniform_bytes",
+        "max_bytes": 4096,
+        "method": "zstd",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_65536_huffman",
+        "task": "uniform_bytes",
+        "max_bytes": 65536,
+        "method": "huffman",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_65536_shannon",
+        "task": "uniform_bytes",
+        "max_bytes": 65536,
+        "method": "shannon",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_65536_arithmetic0",
+        "task": "uniform_bytes",
+        "max_bytes": 65536,
+        "method": "arithmetic0",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_65536_arithmetic1",
+        "task": "uniform_bytes",
+        "max_bytes": 65536,
+        "method": "arithmetic1",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_65536_lz77",
+        "task": "uniform_bytes",
+        "max_bytes": 65536,
+        "method": "lz77",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_65536_deflate",
+        "task": "uniform_bytes",
+        "max_bytes": 65536,
+        "method": "deflate",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "uniform_bytes_65536_zstd",
+        "task": "uniform_bytes",
+        "max_bytes": 65536,
+        "method": "zstd",
+        "window": 4096,
+        "stochastic": true
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_4096_huffman",
+        "task": "owned_code",
+        "max_bytes": 4096,
+        "method": "huffman",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_4096_shannon",
+        "task": "owned_code",
+        "max_bytes": 4096,
+        "method": "shannon",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_4096_arithmetic0",
+        "task": "owned_code",
+        "max_bytes": 4096,
+        "method": "arithmetic0",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_4096_arithmetic1",
+        "task": "owned_code",
+        "max_bytes": 4096,
+        "method": "arithmetic1",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_4096_lz77",
+        "task": "owned_code",
+        "max_bytes": 4096,
+        "method": "lz77",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_4096_deflate",
+        "task": "owned_code",
+        "max_bytes": 4096,
+        "method": "deflate",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_4096_zstd",
+        "task": "owned_code",
+        "max_bytes": 4096,
+        "method": "zstd",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_65536_huffman",
+        "task": "owned_code",
+        "max_bytes": 65536,
+        "method": "huffman",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_65536_shannon",
+        "task": "owned_code",
+        "max_bytes": 65536,
+        "method": "shannon",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_65536_arithmetic0",
+        "task": "owned_code",
+        "max_bytes": 65536,
+        "method": "arithmetic0",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_65536_arithmetic1",
+        "task": "owned_code",
+        "max_bytes": 65536,
+        "method": "arithmetic1",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_65536_lz77",
+        "task": "owned_code",
+        "max_bytes": 65536,
+        "method": "lz77",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_65536_deflate",
+        "task": "owned_code",
+        "max_bytes": 65536,
+        "method": "deflate",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "owned_code_65536_zstd",
+        "task": "owned_code",
+        "max_bytes": 65536,
+        "method": "zstd",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_4096_huffman",
+        "task": "ecoli_excerpt",
+        "max_bytes": 4096,
+        "method": "huffman",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_4096_shannon",
+        "task": "ecoli_excerpt",
+        "max_bytes": 4096,
+        "method": "shannon",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_4096_arithmetic0",
+        "task": "ecoli_excerpt",
+        "max_bytes": 4096,
+        "method": "arithmetic0",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_4096_arithmetic1",
+        "task": "ecoli_excerpt",
+        "max_bytes": 4096,
+        "method": "arithmetic1",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_4096_lz77",
+        "task": "ecoli_excerpt",
+        "max_bytes": 4096,
+        "method": "lz77",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_4096_deflate",
+        "task": "ecoli_excerpt",
+        "max_bytes": 4096,
+        "method": "deflate",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_4096_zstd",
+        "task": "ecoli_excerpt",
+        "max_bytes": 4096,
+        "method": "zstd",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_65536_huffman",
+        "task": "ecoli_excerpt",
+        "max_bytes": 65536,
+        "method": "huffman",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_65536_shannon",
+        "task": "ecoli_excerpt",
+        "max_bytes": 65536,
+        "method": "shannon",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_65536_arithmetic0",
+        "task": "ecoli_excerpt",
+        "max_bytes": 65536,
+        "method": "arithmetic0",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_65536_arithmetic1",
+        "task": "ecoli_excerpt",
+        "max_bytes": 65536,
+        "method": "arithmetic1",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_65536_lz77",
+        "task": "ecoli_excerpt",
+        "max_bytes": 65536,
+        "method": "lz77",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_65536_deflate",
+        "task": "ecoli_excerpt",
+        "max_bytes": 65536,
+        "method": "deflate",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "lossless",
+        "id": "ecoli_excerpt_65536_zstd",
+        "task": "ecoli_excerpt",
+        "max_bytes": 65536,
+        "method": "zstd",
+        "window": 4096,
+        "stochastic": false
+      },
+      {
+        "family": "quantization",
+        "id": "uniform_2",
+        "method": "uniform",
+        "levels": 2,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "uniform_4",
+        "method": "uniform",
+        "levels": 4,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "uniform_8",
+        "method": "uniform",
+        "levels": 8,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "uniform_16",
+        "method": "uniform",
+        "levels": 16,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "uniform_32",
+        "method": "uniform",
+        "levels": 32,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "uniform_64",
+        "method": "uniform",
+        "levels": 64,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "uniform_128",
+        "method": "uniform",
+        "levels": 128,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "uniform_256",
+        "method": "uniform",
+        "levels": 256,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "lloyd_max_2",
+        "method": "lloyd_max",
+        "levels": 2,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "lloyd_max_4",
+        "method": "lloyd_max",
+        "levels": 4,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "lloyd_max_8",
+        "method": "lloyd_max",
+        "levels": 8,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "lloyd_max_16",
+        "method": "lloyd_max",
+        "levels": 16,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "lloyd_max_32",
+        "method": "lloyd_max",
+        "levels": 32,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "lloyd_max_64",
+        "method": "lloyd_max",
+        "levels": 64,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "lloyd_max_128",
+        "method": "lloyd_max",
+        "levels": 128,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "quantization",
+        "id": "lloyd_max_256",
+        "method": "lloyd_max",
+        "levels": 256,
+        "mean": 1,
+        "variance": 3,
+        "train_size": 8192,
+        "test_size": 8192
+      },
+      {
+        "family": "source_channel",
+        "id": "hamming_4_m5",
+        "quantizer_bits": 4,
+        "mean": 1,
+        "variance": 3,
+        "samples": 4096,
+        "snr_db": -5
+      },
+      {
+        "family": "source_channel",
+        "id": "hamming_4_0",
+        "quantizer_bits": 4,
+        "mean": 1,
+        "variance": 3,
+        "samples": 4096,
+        "snr_db": 0
+      },
+      {
+        "family": "source_channel",
+        "id": "hamming_4_5",
+        "quantizer_bits": 4,
+        "mean": 1,
+        "variance": 3,
+        "samples": 4096,
+        "snr_db": 5
+      },
+      {
+        "family": "source_channel",
+        "id": "hamming_4_10",
+        "quantizer_bits": 4,
+        "mean": 1,
+        "variance": 3,
+        "samples": 4096,
+        "snr_db": 10
+      },
+      {
+        "family": "source_channel",
+        "id": "hamming_4_15",
+        "quantizer_bits": 4,
+        "mean": 1,
+        "variance": 3,
+        "samples": 4096,
+        "snr_db": 15
+      },
+      {
+        "family": "source_channel",
+        "id": "hamming_8_m5",
+        "quantizer_bits": 8,
+        "mean": 1,
+        "variance": 3,
+        "samples": 4096,
+        "snr_db": -5
+      },
+      {
+        "family": "source_channel",
+        "id": "hamming_8_0",
+        "quantizer_bits": 8,
+        "mean": 1,
+        "variance": 3,
+        "samples": 4096,
+        "snr_db": 0
+      },
+      {
+        "family": "source_channel",
+        "id": "hamming_8_5",
+        "quantizer_bits": 8,
+        "mean": 1,
+        "variance": 3,
+        "samples": 4096,
+        "snr_db": 5
+      },
+      {
+        "family": "source_channel",
+        "id": "hamming_8_10",
+        "quantizer_bits": 8,
+        "mean": 1,
+        "variance": 3,
+        "samples": 4096,
+        "snr_db": 10
+      },
+      {
+        "family": "source_channel",
+        "id": "hamming_8_15",
+        "quantizer_bits": 8,
+        "mean": 1,
+        "variance": 3,
+        "samples": 4096,
+        "snr_db": 15
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r0_n256",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r0_n256",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r0_n256",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r0_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r0_n1024",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r0_n1024",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r0_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r0_n4096",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r0_n4096",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r30_n256",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0.3,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r30_n256",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0.3,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r30_n256",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0.3,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r30_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0.3,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r30_n1024",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0.3,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r30_n1024",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0.3,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r30_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0.3,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r30_n4096",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0.3,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r30_n4096",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0.3,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r70_n256",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0.7,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r70_n256",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0.7,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r70_n256",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0.7,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r70_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0.7,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r70_n1024",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0.7,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r70_n1024",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0.7,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r70_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0.7,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r70_n4096",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0.7,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r70_n4096",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0.7,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r95_n256",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0.95,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r95_n256",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0.95,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r95_n256",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0.95,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r95_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0.95,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r95_n1024",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0.95,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r95_n1024",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0.95,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d1_r95_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 1,
+        "correlation": 0.95,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d1_r95_n4096",
+        "method": "binned_plugin",
+        "dimension": 1,
+        "correlation": 0.95,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d1_r95_n4096",
+        "method": "ksg",
+        "dimension": 1,
+        "correlation": 0.95,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r0_n256",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r0_n256",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r0_n256",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r0_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r0_n1024",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r0_n1024",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r0_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r0_n4096",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r0_n4096",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r30_n256",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0.3,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r30_n256",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0.3,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r30_n256",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0.3,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r30_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0.3,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r30_n1024",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0.3,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r30_n1024",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0.3,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r30_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0.3,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r30_n4096",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0.3,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r30_n4096",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0.3,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r70_n256",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0.7,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r70_n256",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0.7,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r70_n256",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0.7,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r70_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0.7,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r70_n1024",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0.7,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r70_n1024",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0.7,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r70_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0.7,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r70_n4096",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0.7,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r70_n4096",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0.7,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r95_n256",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0.95,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r95_n256",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0.95,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r95_n256",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0.95,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r95_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0.95,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r95_n1024",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0.95,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r95_n1024",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0.95,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d4_r95_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 4,
+        "correlation": 0.95,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d4_r95_n4096",
+        "method": "binned_plugin",
+        "dimension": 4,
+        "correlation": 0.95,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d4_r95_n4096",
+        "method": "ksg",
+        "dimension": 4,
+        "correlation": 0.95,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r0_n256",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r0_n256",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r0_n256",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r0_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r0_n1024",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r0_n1024",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r0_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r0_n4096",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r0_n4096",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r30_n256",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0.3,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r30_n256",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0.3,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r30_n256",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0.3,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r30_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0.3,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r30_n1024",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0.3,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r30_n1024",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0.3,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r30_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0.3,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r30_n4096",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0.3,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r30_n4096",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0.3,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r70_n256",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0.7,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r70_n256",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0.7,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r70_n256",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0.7,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r70_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0.7,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r70_n1024",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0.7,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r70_n1024",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0.7,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r70_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0.7,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r70_n4096",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0.7,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r70_n4096",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0.7,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r95_n256",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0.95,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r95_n256",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0.95,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r95_n256",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0.95,
+        "samples": 256,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r95_n1024",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0.95,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r95_n1024",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0.95,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r95_n1024",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0.95,
+        "samples": 1024,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "gaussian_plugin_d16_r95_n4096",
+        "method": "gaussian_plugin",
+        "dimension": 16,
+        "correlation": 0.95,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "binned_plugin_d16_r95_n4096",
+        "method": "binned_plugin",
+        "dimension": 16,
+        "correlation": 0.95,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "estimation",
+        "id": "ksg_d16_r95_n4096",
+        "method": "ksg",
+        "dimension": 16,
+        "correlation": 0.95,
+        "samples": 4096,
+        "neighbors": 5,
+        "bin_edges": 9
+      },
+      {
+        "family": "statistics",
+        "id": "rare_event_20",
+        "task": "rare_events",
+        "blocklength": 20,
+        "probability": 0.1,
+        "threshold": 0.3,
+        "trials": 10000
+      },
+      {
+        "family": "statistics",
+        "id": "rare_event_50",
+        "task": "rare_events",
+        "blocklength": 50,
+        "probability": 0.1,
+        "threshold": 0.3,
+        "trials": 10000
+      },
+      {
+        "family": "statistics",
+        "id": "rare_event_100",
+        "task": "rare_events",
+        "blocklength": 100,
+        "probability": 0.1,
+        "threshold": 0.3,
+        "trials": 10000
+      },
+      {
+        "family": "statistics",
+        "id": "rare_event_200",
+        "task": "rare_events",
+        "blocklength": 200,
+        "probability": 0.1,
+        "threshold": 0.3,
+        "trials": 10000
+      },
+      {
+        "family": "statistics",
+        "id": "rare_event_500",
+        "task": "rare_events",
+        "blocklength": 500,
+        "probability": 0.1,
+        "threshold": 0.3,
+        "trials": 10000
+      },
+      {
+        "family": "statistics",
+        "id": "stein_16",
+        "task": "hypothesis_test",
+        "blocklength": 16,
+        "null": 0.1,
+        "alternative": 0.3,
+        "alpha": 0.05,
+        "stochastic": false
+      },
+      {
+        "family": "statistics",
+        "id": "stein_32",
+        "task": "hypothesis_test",
+        "blocklength": 32,
+        "null": 0.1,
+        "alternative": 0.3,
+        "alpha": 0.05,
+        "stochastic": false
+      },
+      {
+        "family": "statistics",
+        "id": "stein_64",
+        "task": "hypothesis_test",
+        "blocklength": 64,
+        "null": 0.1,
+        "alternative": 0.3,
+        "alpha": 0.05,
+        "stochastic": false
+      },
+      {
+        "family": "statistics",
+        "id": "stein_128",
+        "task": "hypothesis_test",
+        "blocklength": 128,
+        "null": 0.1,
+        "alternative": 0.3,
+        "alpha": 0.05,
+        "stochastic": false
+      },
+      {
+        "family": "statistics",
+        "id": "stein_256",
+        "task": "hypothesis_test",
+        "blocklength": 256,
+        "null": 0.1,
+        "alternative": 0.3,
+        "alpha": 0.05,
+        "stochastic": false
+      },
+      {
+        "family": "statistics",
+        "id": "stein_512",
+        "task": "hypothesis_test",
+        "blocklength": 512,
+        "null": 0.1,
+        "alternative": 0.3,
+        "alpha": 0.05,
+        "stochastic": false
+      },
+      {
+        "family": "statistics",
+        "id": "stein_1024",
+        "task": "hypothesis_test",
+        "blocklength": 1024,
+        "null": 0.1,
+        "alternative": 0.3,
+        "alpha": 0.05,
+        "stochastic": false
+      },
+      {
+        "family": "statistics",
+        "id": "stein_2048",
+        "task": "hypothesis_test",
+        "blocklength": 2048,
+        "null": 0.1,
+        "alternative": 0.3,
+        "alpha": 0.05,
+        "stochastic": false
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters2_beta0",
+        "clusters": 2,
+        "beta": 0.1,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters2_beta1",
+        "clusters": 2,
+        "beta": 0.5,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters2_beta2",
+        "clusters": 2,
+        "beta": 0.9,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters2_beta3",
+        "clusters": 2,
+        "beta": 1.5,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters2_beta4",
+        "clusters": 2,
+        "beta": 2,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters2_beta5",
+        "clusters": 2,
+        "beta": 4,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters2_beta6",
+        "clusters": 2,
+        "beta": 8,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters2_beta7",
+        "clusters": 2,
+        "beta": 16,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters2_beta8",
+        "clusters": 2,
+        "beta": 32,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters3_beta0",
+        "clusters": 3,
+        "beta": 0.1,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters3_beta1",
+        "clusters": 3,
+        "beta": 0.5,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters3_beta2",
+        "clusters": 3,
+        "beta": 0.9,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters3_beta3",
+        "clusters": 3,
+        "beta": 1.5,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters3_beta4",
+        "clusters": 3,
+        "beta": 2,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters3_beta5",
+        "clusters": 3,
+        "beta": 4,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters3_beta6",
+        "clusters": 3,
+        "beta": 8,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters3_beta7",
+        "clusters": 3,
+        "beta": 16,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters3_beta8",
+        "clusters": 3,
+        "beta": 32,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters4_beta0",
+        "clusters": 4,
+        "beta": 0.1,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters4_beta1",
+        "clusters": 4,
+        "beta": 0.5,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters4_beta2",
+        "clusters": 4,
+        "beta": 0.9,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters4_beta3",
+        "clusters": 4,
+        "beta": 1.5,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters4_beta4",
+        "clusters": 4,
+        "beta": 2,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters4_beta5",
+        "clusters": 4,
+        "beta": 4,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters4_beta6",
+        "clusters": 4,
+        "beta": 8,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters4_beta7",
+        "clusters": 4,
+        "beta": 16,
+        "restarts": 5
+      },
+      {
+        "family": "bottleneck",
+        "id": "clusters4_beta8",
+        "clusters": 4,
+        "beta": 32,
+        "restarts": 5
+      },
+      {
+        "family": "neural",
+        "id": "mine_dv_d1_r0",
+        "method": "mine_dv",
+        "dimension": 1,
+        "correlation": 0,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "mine_dv_d1_r70",
+        "method": "mine_dv",
+        "dimension": 1,
+        "correlation": 0.7,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "mine_dv_d1_r95",
+        "method": "mine_dv",
+        "dimension": 1,
+        "correlation": 0.95,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "mine_dv_d4_r0",
+        "method": "mine_dv",
+        "dimension": 4,
+        "correlation": 0,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "mine_dv_d4_r70",
+        "method": "mine_dv",
+        "dimension": 4,
+        "correlation": 0.7,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "mine_dv_d4_r95",
+        "method": "mine_dv",
+        "dimension": 4,
+        "correlation": 0.95,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "mine_dv_d16_r0",
+        "method": "mine_dv",
+        "dimension": 16,
+        "correlation": 0,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "mine_dv_d16_r70",
+        "method": "mine_dv",
+        "dimension": 16,
+        "correlation": 0.7,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "mine_dv_d16_r95",
+        "method": "mine_dv",
+        "dimension": 16,
+        "correlation": 0.95,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "infonce_d1_r0",
+        "method": "infonce",
+        "dimension": 1,
+        "correlation": 0,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "infonce_d1_r70",
+        "method": "infonce",
+        "dimension": 1,
+        "correlation": 0.7,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "infonce_d1_r95",
+        "method": "infonce",
+        "dimension": 1,
+        "correlation": 0.95,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "infonce_d4_r0",
+        "method": "infonce",
+        "dimension": 4,
+        "correlation": 0,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "infonce_d4_r70",
+        "method": "infonce",
+        "dimension": 4,
+        "correlation": 0.7,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "infonce_d4_r95",
+        "method": "infonce",
+        "dimension": 4,
+        "correlation": 0.95,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "infonce_d16_r0",
+        "method": "infonce",
+        "dimension": 16,
+        "correlation": 0,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "infonce_d16_r70",
+        "method": "infonce",
+        "dimension": 16,
+        "correlation": 0.7,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "neural",
+        "id": "infonce_d16_r95",
+        "method": "infonce",
+        "dimension": 16,
+        "correlation": 0.95,
+        "train_size": 8192,
+        "validation_size": 4096,
+        "test_size": 4096,
+        "batch_size": 256,
+        "steps": 1500,
+        "learning_rate": 0.001,
+        "validate_every": 100,
+        "width": 128
+      },
+      {
+        "family": "images",
+        "id": "astronaut_jpeg_35",
+        "image": "astronaut",
+        "method": "jpeg",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_jpeg_60",
+        "image": "astronaut",
+        "method": "jpeg",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_jpeg_85",
+        "image": "astronaut",
+        "method": "jpeg",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_webp_35",
+        "image": "astronaut",
+        "method": "webp",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_webp_60",
+        "image": "astronaut",
+        "method": "webp",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_webp_85",
+        "image": "astronaut",
+        "method": "webp",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_avif_35",
+        "image": "astronaut",
+        "method": "avif",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_avif_60",
+        "image": "astronaut",
+        "method": "avif",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_avif_85",
+        "image": "astronaut",
+        "method": "avif",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_jpeg2000_20",
+        "image": "astronaut",
+        "method": "jpeg2000",
+        "point": 20,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_jpeg2000_10",
+        "image": "astronaut",
+        "method": "jpeg2000",
+        "point": 10,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_jpeg2000_5",
+        "image": "astronaut",
+        "method": "jpeg2000",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_bmshj2018_factorized_1",
+        "image": "astronaut",
+        "method": "bmshj2018-factorized",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_bmshj2018_factorized_3",
+        "image": "astronaut",
+        "method": "bmshj2018-factorized",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_bmshj2018_factorized_5",
+        "image": "astronaut",
+        "method": "bmshj2018-factorized",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_bmshj2018_hyperprior_1",
+        "image": "astronaut",
+        "method": "bmshj2018-hyperprior",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_bmshj2018_hyperprior_3",
+        "image": "astronaut",
+        "method": "bmshj2018-hyperprior",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_bmshj2018_hyperprior_5",
+        "image": "astronaut",
+        "method": "bmshj2018-hyperprior",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_mbt2018_mean_1",
+        "image": "astronaut",
+        "method": "mbt2018-mean",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_mbt2018_mean_3",
+        "image": "astronaut",
+        "method": "mbt2018-mean",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_mbt2018_mean_5",
+        "image": "astronaut",
+        "method": "mbt2018-mean",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_cheng2020_anchor_1",
+        "image": "astronaut",
+        "method": "cheng2020-anchor",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_cheng2020_anchor_3",
+        "image": "astronaut",
+        "method": "cheng2020-anchor",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "astronaut_cheng2020_anchor_5",
+        "image": "astronaut",
+        "method": "cheng2020-anchor",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_jpeg_35",
+        "image": "coffee",
+        "method": "jpeg",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_jpeg_60",
+        "image": "coffee",
+        "method": "jpeg",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_jpeg_85",
+        "image": "coffee",
+        "method": "jpeg",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_webp_35",
+        "image": "coffee",
+        "method": "webp",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_webp_60",
+        "image": "coffee",
+        "method": "webp",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_webp_85",
+        "image": "coffee",
+        "method": "webp",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_avif_35",
+        "image": "coffee",
+        "method": "avif",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_avif_60",
+        "image": "coffee",
+        "method": "avif",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_avif_85",
+        "image": "coffee",
+        "method": "avif",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_jpeg2000_20",
+        "image": "coffee",
+        "method": "jpeg2000",
+        "point": 20,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_jpeg2000_10",
+        "image": "coffee",
+        "method": "jpeg2000",
+        "point": 10,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_jpeg2000_5",
+        "image": "coffee",
+        "method": "jpeg2000",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_bmshj2018_factorized_1",
+        "image": "coffee",
+        "method": "bmshj2018-factorized",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_bmshj2018_factorized_3",
+        "image": "coffee",
+        "method": "bmshj2018-factorized",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_bmshj2018_factorized_5",
+        "image": "coffee",
+        "method": "bmshj2018-factorized",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_bmshj2018_hyperprior_1",
+        "image": "coffee",
+        "method": "bmshj2018-hyperprior",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_bmshj2018_hyperprior_3",
+        "image": "coffee",
+        "method": "bmshj2018-hyperprior",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_bmshj2018_hyperprior_5",
+        "image": "coffee",
+        "method": "bmshj2018-hyperprior",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_mbt2018_mean_1",
+        "image": "coffee",
+        "method": "mbt2018-mean",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_mbt2018_mean_3",
+        "image": "coffee",
+        "method": "mbt2018-mean",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_mbt2018_mean_5",
+        "image": "coffee",
+        "method": "mbt2018-mean",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_cheng2020_anchor_1",
+        "image": "coffee",
+        "method": "cheng2020-anchor",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_cheng2020_anchor_3",
+        "image": "coffee",
+        "method": "cheng2020-anchor",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "coffee_cheng2020_anchor_5",
+        "image": "coffee",
+        "method": "cheng2020-anchor",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_jpeg_35",
+        "image": "chelsea",
+        "method": "jpeg",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_jpeg_60",
+        "image": "chelsea",
+        "method": "jpeg",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_jpeg_85",
+        "image": "chelsea",
+        "method": "jpeg",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_webp_35",
+        "image": "chelsea",
+        "method": "webp",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_webp_60",
+        "image": "chelsea",
+        "method": "webp",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_webp_85",
+        "image": "chelsea",
+        "method": "webp",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_avif_35",
+        "image": "chelsea",
+        "method": "avif",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_avif_60",
+        "image": "chelsea",
+        "method": "avif",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_avif_85",
+        "image": "chelsea",
+        "method": "avif",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_jpeg2000_20",
+        "image": "chelsea",
+        "method": "jpeg2000",
+        "point": 20,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_jpeg2000_10",
+        "image": "chelsea",
+        "method": "jpeg2000",
+        "point": 10,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_jpeg2000_5",
+        "image": "chelsea",
+        "method": "jpeg2000",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_bmshj2018_factorized_1",
+        "image": "chelsea",
+        "method": "bmshj2018-factorized",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_bmshj2018_factorized_3",
+        "image": "chelsea",
+        "method": "bmshj2018-factorized",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_bmshj2018_factorized_5",
+        "image": "chelsea",
+        "method": "bmshj2018-factorized",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_bmshj2018_hyperprior_1",
+        "image": "chelsea",
+        "method": "bmshj2018-hyperprior",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_bmshj2018_hyperprior_3",
+        "image": "chelsea",
+        "method": "bmshj2018-hyperprior",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_bmshj2018_hyperprior_5",
+        "image": "chelsea",
+        "method": "bmshj2018-hyperprior",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_mbt2018_mean_1",
+        "image": "chelsea",
+        "method": "mbt2018-mean",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_mbt2018_mean_3",
+        "image": "chelsea",
+        "method": "mbt2018-mean",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_mbt2018_mean_5",
+        "image": "chelsea",
+        "method": "mbt2018-mean",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_cheng2020_anchor_1",
+        "image": "chelsea",
+        "method": "cheng2020-anchor",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_cheng2020_anchor_3",
+        "image": "chelsea",
+        "method": "cheng2020-anchor",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "chelsea_cheng2020_anchor_5",
+        "image": "chelsea",
+        "method": "cheng2020-anchor",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_jpeg_35",
+        "image": "rocket",
+        "method": "jpeg",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_jpeg_60",
+        "image": "rocket",
+        "method": "jpeg",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_jpeg_85",
+        "image": "rocket",
+        "method": "jpeg",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_webp_35",
+        "image": "rocket",
+        "method": "webp",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_webp_60",
+        "image": "rocket",
+        "method": "webp",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_webp_85",
+        "image": "rocket",
+        "method": "webp",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_avif_35",
+        "image": "rocket",
+        "method": "avif",
+        "point": 35,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_avif_60",
+        "image": "rocket",
+        "method": "avif",
+        "point": 60,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_avif_85",
+        "image": "rocket",
+        "method": "avif",
+        "point": 85,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_jpeg2000_20",
+        "image": "rocket",
+        "method": "jpeg2000",
+        "point": 20,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_jpeg2000_10",
+        "image": "rocket",
+        "method": "jpeg2000",
+        "point": 10,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_jpeg2000_5",
+        "image": "rocket",
+        "method": "jpeg2000",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_bmshj2018_factorized_1",
+        "image": "rocket",
+        "method": "bmshj2018-factorized",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_bmshj2018_factorized_3",
+        "image": "rocket",
+        "method": "bmshj2018-factorized",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_bmshj2018_factorized_5",
+        "image": "rocket",
+        "method": "bmshj2018-factorized",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_bmshj2018_hyperprior_1",
+        "image": "rocket",
+        "method": "bmshj2018-hyperprior",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_bmshj2018_hyperprior_3",
+        "image": "rocket",
+        "method": "bmshj2018-hyperprior",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_bmshj2018_hyperprior_5",
+        "image": "rocket",
+        "method": "bmshj2018-hyperprior",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_mbt2018_mean_1",
+        "image": "rocket",
+        "method": "mbt2018-mean",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_mbt2018_mean_3",
+        "image": "rocket",
+        "method": "mbt2018-mean",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_mbt2018_mean_5",
+        "image": "rocket",
+        "method": "mbt2018-mean",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_cheng2020_anchor_1",
+        "image": "rocket",
+        "method": "cheng2020-anchor",
+        "point": 1,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_cheng2020_anchor_3",
+        "image": "rocket",
+        "method": "cheng2020-anchor",
+        "point": 3,
+        "timing_repeats": 3,
+        "stochastic": false
+      },
+      {
+        "family": "images",
+        "id": "rocket_cheng2020_anchor_5",
+        "image": "rocket",
+        "method": "cheng2020-anchor",
+        "point": 5,
+        "timing_repeats": 3,
+        "stochastic": false
+      }
+    ]
+  },
+  "cases": [
+    {
+      "family": "neural",
+      "id": "mine_dv_d1_r0",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "mine_dv_d1_r70",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "mine_dv_d1_r95",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "mine_dv_d4_r0",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "mine_dv_d4_r70",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "mine_dv_d4_r95",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "mine_dv_d16_r0",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "mine_dv_d16_r70",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "mine_dv_d16_r95",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "infonce_d1_r0",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "infonce_d1_r70",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "infonce_d1_r95",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "infonce_d4_r0",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "infonce_d4_r70",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "infonce_d4_r95",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "infonce_d16_r0",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "infonce_d16_r70",
+      "seed": 41,
+      "resumed": false
+    },
+    {
+      "family": "neural",
+      "id": "infonce_d16_r95",
+      "seed": 41,
+      "resumed": false
+    }
+  ]
+}

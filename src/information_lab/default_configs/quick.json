@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "name": "quick",
+  "seeds": [
+    41
+  ],
+  "cases": [
+    {
+      "family": "foundations",
+      "id": "joint_entropy",
+      "task": "joint_entropy",
+      "stochastic": false
+    },
+    {
+      "family": "sources",
+      "id": "markov_transformations",
+      "task": "markov_transformations",
+      "stochastic": false
+    },
+    {
+      "family": "channels",
+      "id": "bsc_0",
+      "task": "bsc",
+      "noise": 0,
+      "stochastic": false
+    },
+    {
+      "family": "rate_distortion",
+      "id": "bernoulli_hamming_00",
+      "task": "bernoulli_hamming",
+      "beta": 0,
+      "tolerance": 1e-08,
+      "accelerate": false,
+      "stochastic": false,
+      "p_one": 0.5
+    },
+    {
+      "family": "coding",
+      "id": "uncoded_m1",
+      "method": "uncoded",
+      "message_bits": 64,
+      "trials": 128,
+      "ebn0_db": -1,
+      "batch_size": 256,
+      "max_iterations": 50,
+      "graph_seed": 991,
+      "design_erasure": 0.5
+    },
+    {
+      "family": "lossless",
+      "id": "iid_biased_4096_huffman",
+      "task": "iid_biased",
+      "max_bytes": 512,
+      "method": "huffman",
+      "window": 4096,
+      "stochastic": true
+    },
+    {
+      "family": "quantization",
+      "id": "uniform_2",
+      "method": "uniform",
+      "levels": 2,
+      "mean": 1,
+      "variance": 3,
+      "train_size": 512,
+      "test_size": 512
+    },
+    {
+      "family": "source_channel",
+      "id": "hamming_4_m5",
+      "quantizer_bits": 4,
+      "mean": 1,
+      "variance": 3,
+      "samples": 256,
+      "snr_db": -5
+    },
+    {
+      "family": "estimation",
+      "id": "gaussian_plugin_d1_r0_n256",
+      "method": "gaussian_plugin",
+      "dimension": 1,
+      "correlation": 0,
+      "samples": 256,
+      "neighbors": 5,
+      "bin_edges": 9
+    },
+    {
+      "family": "statistics",
+      "id": "rare_event_20",
+      "task": "rare_events",
+      "blocklength": 20,
+      "probability": 0.1,
+      "threshold": 0.3,
+      "trials": 128
+    },
+    {
+      "family": "bottleneck",
+      "id": "clusters2_beta0",
+      "clusters": 2,
+      "beta": 0.1,
+      "restarts": 2
+    }
+  ]
+}

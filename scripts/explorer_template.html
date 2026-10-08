@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Information, Compression & Communication Lab</title>
+<style>
+:root {
+  --ink:#132d48;
+  --muted:#50677a;
+  --teal:#007c88;
+  --line:#d7e4ec;
+  --paper:#f3f7fa;
+  --white:#fff
+}
+* {
+  box-sizing:border-box
+}
+body {
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+main {
+  max-width:1280px;
+  margin:auto;
+  padding:32px 24px 64px
+}
+a {
+  color:var(--teal);
+  text-underline-offset:3px
+}
+header {
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  align-items:center;
+  margin-bottom:24px
+}
+.eyebrow {
+  font-size:12px;
+  font-weight:750;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--teal)
+}
+h1 {
+  font-size:clamp(26px,4vw,39px);
+  line-height:1.2;
+  margin:8px 0 12px;
+  letter-spacing:-.035em
+}
+h2 {
+  font-size:21px;
+  margin:0 0 12px
+}
+h3 {
+  font-size:15px;
+  margin:0 0 8px
+}
+p {
+  margin:8px 0;
+  color:var(--muted)
+}
+.badge {
+  background:#e1f2f1;
+  color:#075b61;
+  border-radius:12px;
+  padding:14px 18px;
+  white-space:nowrap;
+  font-size:14px
+}
+.panel {
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:24px;
+  margin:20px 0
+}
+.controls {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px
+}
+.wide {
+  grid-column:1/-1
+}
+label {
+  font-size:13px;
+  font-weight:650;
+  display:block;
+  margin-bottom:6px
+}
+select {
+  width:100%;
+  font:inherit;
+  color:var(--ink);
+  background:#fff;
+  border:1px solid #b6cdd9;
+  border-radius:9px;
+  padding:11px 12px;
+  min-width:0
+}
+select:disabled {
+  opacity:.72;
+  background:#f7f9fb
+}
+select:focus,input:focus,a:focus {
+  outline:3px solid #64c9d1;
+  outline-offset:2px
+}
+.intro {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px
+}
+.intro p {
+  font-size:15px
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px
+}
+.metric {
+  padding:15px;
+  background:#f2f8fa;
+  border-radius:12px;
+  border:1px solid var(--line)
+}
+.metric-label {
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.35;
+  min-height:32px
+}
+.metric-value {
+  font-weight:750;
+  font-size:22px;
+  overflow-wrap:anywhere
+}
+.scope {
+  border-left:3px solid var(--teal);
+  padding-left:15px;
+  font-size:14px
+}
+.figure {
+  margin:16px 0 0
+}
+.figure img {
+  display:block;
+  width:100%;
+  height:auto;
+  border:1px solid var(--line);
+  border-radius:12px
+}
+.figure figcaption {
+  font-size:13px;
+  color:var(--muted);
+  margin-top:10px
+}
+.image-pair {
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+  border:1px solid var(--line);
+  max-width:800px;
+  margin:auto
+}
+.image-pair img {
+  width:100%;
+  height:auto;
+  display:block
+}
+.image-pair .decoded {
+  position:absolute;
+  top:0;
+  left:0;
+  clip-path:inset(0 0 0 50%)
+}
+.image-labels {
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  font-weight:650;
+  max-width:800px;
+  margin:8px auto
+}
+.slider {
+  width:100%;
+  accent-color:var(--teal);
+  margin:12px 0;
+  min-height:24px
+}
+.slider-wrap {
+  max-width:800px;
+  margin:auto
+}
+.table-wrap {
+  overflow:auto;
+  max-height:480px
+}
+th {
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:1
+}
+table {
+  border-collapse:collapse;
+  width:100%;
+  font-size:13px
+}
+th,td {
+  text-align:left;
+  padding:11px 12px;
+  border-bottom:1px solid var(--line);
+  white-space:nowrap
+}
+th {
+  font-weight:750;
+  color:#183851
+}
+tr.selected {
+  background:#e6f5f4
+}
+td:first-child {
+  white-space:normal;
+  min-width:180px
+}
+.links {
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  font-size:14px;
+  margin-top:16px
+}
+.calculation {
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:24px;
+  align-items:center
+}
+.live-values {
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap
+}
+.live-values strong {
+  display:block;
+  font-size:28px
+}
+details {
+  font-size:14px;
+  margin-top:16px
+}
+summary {
+  cursor:pointer;
+  color:var(--teal);
+  font-weight:650
+}
+pre {
+  font-size:12px;
+  line-height:1.5;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  background:#f4f7fa;
+  padding:16px;
+  border-radius:8px
+}
+footer {
+  font-size:13px;
+  color:var(--muted);
+  margin-top:28px
+}
+#selectionStatus {
+  font-size:13px;
+  overflow-wrap:anywhere;
+  color:var(--muted)
+}
+#comparisonCount {
+  font-size:13px;
+  color:var(--muted)
+}
+[hidden] {
+  display:none!important
+}
+@media(max-width:700px) {
+  main {
+  padding:20px 12px 40px
+}
+header {
+  display:block
+}
+.badge {
+  display:inline-block;
+  margin-top:12px
+}
+.panel {
+  padding:18px 14px;
+  border-radius:14px
+}
+.controls,.intro,.calculation {
+  grid-template-columns:1fr
+}
+.cards {
+  grid-template-columns:repeat(2,minmax(0,1fr))
+}
+.metric-value {
+  font-size:20px
+}
+.intro {
+  gap:12px
+}
+.table-wrap {
+  margin:0 -4px
+}
+.scope {
+  font-size:13px
+}
+
+}
+
+</style>
+</head>
+<body><main>
+<header><div><div class="eyebrow">Information Theory Lab</div><h1>Compression, communication<br>and information</h1><p>Explore measured experiments, actual decoded files, and the limits behind the results.</p></div><div class="badge"><b>__RUN_COUNT__</b> recorded experiments<br>13 connected fields · reproducible evidence</div></header>
+<nav class="links" aria-label="Project guides"><a href="results.html">Measured results</a><a href="course_coverage.html">Course concepts and proofs</a><a href="mathematical_contracts.html">Equations and assumptions</a><a href="reproducibility.html">Run the experiments</a><a href="references.html">Sources and credits</a></nav>
+<section class="panel" aria-labelledby="chooseTitle"><h2 id="chooseTitle">Choose an experiment</h2><p>Start with a photograph, then compare codecs by their actual file size and decoded quality. Change the field to explore sources, coding, estimation and theoretical examples.</p><div class="controls">
+<div class="wide"><label for="field">Field</label><select id="field"></select></div>
+<div><label for="scenario">Source, channel or scenario</label><select id="scenario"></select></div>
+<div><label for="method">Method</label><select id="method"></select></div>
+<div><label for="setting">Recorded parameter setting</label><select id="setting"></select></div>
+<div><label for="seed">Experiment seed</label><select id="seed"></select></div>
+</div></section>
+<section class="panel" aria-labelledby="resultTitle"><div class="intro"><div><div class="eyebrow" id="resultField"></div><h2 id="resultTitle"></h2><p id="question"></p></div><div><h3>How to read this result</h3><p id="explanation"></p></div></div><p id="selectionStatus" aria-live="polite"></p><div class="cards" id="metrics"></div><p class="scope" id="scope"></p>
+<div id="photoView" hidden><div class="image-labels"><span>Original RGB8 input</span><span>Actually decoded RGB8 pixels</span></div><div class="image-pair"><img id="originalImage" alt="Original credited photograph"><img id="decodedImage" class="decoded" alt="Decoded reconstruction from the saved bitstream"></div><div class="slider-wrap"><label for="reveal">Reveal comparison: original on the left, decoded on the right</label><input id="reveal" class="slider" type="range" min="0" max="100" step="1" value="50"><p id="revealValue"></p></div></div>
+<figure id="plotView" class="figure"><img id="experimentFigure" alt="Recorded numerical experiment"><figcaption id="figureCaption"></figcaption></figure>
+<div class="links"><a id="recordLink" href="#">Full recorded measurements</a><a id="dataLink" href="#">Numerical arrays (.npz)</a><a id="assetLink" href="#">Open image or figure at full size</a></div>
+<details id="configurationDetails"><summary>Exact experiment configuration</summary><pre id="config"></pre></details></section>
+<section class="panel" aria-labelledby="comparisonTitle"><div class="eyebrow">Measured comparisons</div><h2 id="comparisonTitle">Results for this scenario</h2><p id="comparisonScope"></p><p id="comparisonCount"></p><div class="table-wrap"><table id="comparison"><thead></thead><tbody></tbody></table></div></section>
+<section class="panel" aria-labelledby="studiesTitle"><div class="eyebrow">Cross-method studies</div><h2 id="studiesTitle">Controlled comparisons</h2><p>These six broader studies use the explicit source laws and measurement conventions in their captions.</p><div id="studyGallery" class="intro"></div></section>
+<section class="panel calculation" aria-labelledby="liveTitle"><div><div class="eyebrow">Live theory check</div><h2 id="liveTitle">What does binary noise cost?</h2><p>Change the crossover probability p of a binary symmetric channel. H₂(p) measures uncertainty; its capacity is 1 − H₂(p) bits per channel use.</p><label for="crossover">Crossover probability <span id="crossoverLabel"></span></label><input id="crossover" class="slider" type="range" min="0" max="0.5" step="0.01" value="0.1"><p>This computes exact binary formulas. The saved experiment above keeps its recorded settings.</p></div><div class="live-values"><div>Noise entropy (bits)<strong id="liveEntropy"></strong></div><div>Capacity (bits/use)<strong id="liveCapacity"></strong></div></div></section>
+<footer>Figures, photographs, metrics and configurations are linked to the same recorded experiment. Finite estimates, local optima and short-code outcomes retain their stated limits. This page works offline and on GitHub Pages; it reads saved evidence and does not train models in your browser.</footer>
+</main>
+<script id="recordData" type="application/json">__RECORD_DATA__</script>
+<script>
+'use strict';
+const dataset = JSON.parse(document.getElementById('recordData').textContent),
+  rows = dataset.rows;
+const el = id => document.getElementById(id),
+  controls = ['field', 'scenario', 'method', 'setting', 'seed'];
+const context = {
+  images: ['Can a smaller actual image file retain useful visual quality?', 'Compare complete container bpp, PSNR and structural similarity on the exact decoded pixels. Quality numbers differ between codec families; the four resized photographs form a small demonstration set.'],
+  coding: ['Which short code protects a 64-bit message at the same energy per message bit?', 'The left grid contains real message bits; the right grid marks decoded errors. BER and BLER answer different questions. Confidence intervals use independent messages. Code rates include termination and code lengths differ.'],
+  lossless: ['Which encoder makes this source smaller and reconstructs every byte?', 'The whole stream includes headers, transmitted models, padding and checksums. Marginal byte entropy can differ from a dependent source’s entropy rate. A small source can grow because of model overhead.'],
+  foundations: ['How do entropy and dependence behave in exact finite distributions?', 'Probabilities are explicitly saved. Pairwise independence can hide parity constraints. Conditioning can increase or decrease MI; the blanket strict convexity/concavity claims in the sheet require correction.'],
+  sources: ['What survives when a source is transformed or its blocklength grows?', 'Entropy rates use each process’s output time unit. Exact IID multinomial counts implement the weak/strong typicality definitions. Non-Markov transforms can preserve entropy rate.'],
+  channels: ['How much information can this channel transmit?', 'The numerical capacity interval is certified by lower and upper bounds. Gaussian allocation uses water filling. The finite-length normal approximation is labelled and can break down for short blocks.'],
+  rate_distortion: ['How much information is required at a chosen distortion?', 'A reconstruction kernel gives a feasible rate and a separately feasible dual gives a lower bound. Infinite distortion forbids a transition. The Gaussian grid is finite, not the continuous Gaussian source.'],
+  quantization: ['How much precision survives a real scalar quantizer and coded index stream?', 'Lloyd–Max fits training data only. Distortion is measured on independent test draws; all centers and Huffman model counts are transmitted. The Gaussian R(D) curve is an asymptotic limit.'],
+  source_channel: ['At equal channel uses and power, does a short digital code beat analog transmission?', 'Digital ML, source-prior MAP and posterior mean optimize different decisions. Analog MMSE removes the source mean before transmission. The ideal separation bound is asymptotic and is not the achieved short-code result.'],
+  statistics: ['How can we estimate rare events and test competing source laws?', 'Zero naive hits do not make a rare event impossible. Importance sampling uses likelihood weights. Exact Neyman–Pearson tests randomize at the boundary; Stein’s exponent is a limit.'],
+  estimation: ['How accurately can finite samples reveal a known amount of information?', 'The scatterplot projects only the first coordinate. Gaussian plug-in assumes Gaussianity, sparse histograms have discretization/sample bias, and KSG is sensitive to dimension and sample size. Estimates are not clipped.'],
+  neural: ['Do learned variational objectives recover known information?', 'Checkpoint selection uses independent validation data, then the chosen model is tested on held-out draws. InfoNCE saturates at log₂(batch size); a population bound does not certify a finite empirical estimate.'],
+  bottleneck: ['Which representation preserves relevance while discarding input information?', 'The heatmap is the learned representation kernel. Five independently initialized restarts are compared. A small fixed-point residual establishes local convergence, not a global optimum.']
+};
+const metricLabels = {
+  container_bpp: 'Complete file (bits/pixel)',
+  payload_bpp: 'Entropy payload (bits/pixel)',
+  estimated_bpp: 'Likelihood estimate (bits/pixel)',
+  psnr_db: 'PSNR (dB)',
+  ssim_rgb: 'RGB SSIM',
+  ms_ssim_rgb: 'RGB MS-SSIM',
+  encode_seconds: 'Encode seconds',
+  decode_seconds: 'Decode seconds',
+  bit_error_rate: 'Bit error rate',
+  block_error_rate: 'Message error rate',
+  block_error_interval: '95% message-error interval',
+  actual_rate: 'Message bits / coded bits',
+  coded_bits: 'Coded bits / message',
+  bits_per_byte: 'Complete file (bits/source byte)',
+  byte_entropy_bits: 'Marginal byte entropy (bits)',
+  known_entropy_rate_bits: 'Known source entropy rate',
+  round_trip_exact: 'Byte-exact round trip',
+  lower_bits: 'Certified lower capacity (bits/use)',
+  upper_bits: 'Certified upper capacity (bits/use)',
+  gap_bits: 'Optimality gap (bits)',
+  capacity_bits_per_parallel_use: 'Capacity (bits/parallel use)',
+  upper_rate_bits: 'Feasible rate (bits/symbol)',
+  lower_rate_bits: 'Dual lower rate (bits/symbol)',
+  distortion: 'Held-out or achieved distortion',
+  analytic_rate_bits: 'Analytic rate (bits/symbol)',
+  estimate_bits: 'Finite MI estimate (bits)',
+  true_bits: 'Known Gaussian MI (bits)',
+  validation_bits: 'Selected validation objective (bits)',
+  selected_step: 'Selected training step',
+  batch_ceiling_bits: 'InfoNCE ceiling (bits)',
+  i_input_bits: 'I(X;Z) (bits)',
+  i_label_bits: 'I(Y;Z) (bits)',
+  objective_bits: 'IB objective (bits)',
+  fixed_point_change: 'Fixed-point residual',
+  container_bits_per_sample: 'Complete stream (bits/sample)',
+  gaussian_lower_rate_bits: 'Gaussian lower rate (bits/sample)',
+  digital_mse: 'Digital soft-ML MSE',
+  digital_map_mse: 'Digital prior-MAP MSE',
+  digital_mmse_mse: 'Digital posterior-mean MSE',
+  analog_mse: 'Analog MMSE reconstruction MSE',
+  channel_uses_per_source: 'Channel uses / source symbol',
+  weak_fraction: 'Weakly typical block fraction',
+  strong_fraction: 'Strongly typical block fraction',
+  source_rate: 'Original entropy rate (bits/output)',
+  subsampled_rate: 'Subsampled rate (bits/output)',
+  log_exact_probability: 'Exact natural-log tail probability',
+  log_is_probability: 'Importance-sampling log probability',
+  naive_hits: 'Naive tail hits',
+  relative_standard_error: 'Relative Monte Carlo standard error',
+  false_alarm: 'False-alarm probability',
+  log_miss_probability: 'Natural-log miss probability',
+  miss_exponent_bits: 'Finite miss exponent (bits/symbol)',
+  stein_limit_bits: 'Stein limit (bits/symbol)',
+  pair_mi: 'Pair MI (bits)',
+  joint_to_last_mi: 'Joint-to-last MI (bits)',
+  conditional_mi: 'Conditional MI (bits)'
+};
+const columns = {
+  images: ['container_bpp', 'psnr_db', 'ms_ssim_rgb', 'encode_seconds', 'decode_seconds'],
+  coding: ['actual_rate', 'bit_error_rate', 'block_error_rate', 'block_error_interval', 'decode_seconds'],
+  lossless: ['bits_per_byte', 'byte_entropy_bits', 'known_entropy_rate_bits', 'round_trip_exact', 'encode_seconds', 'decode_seconds'],
+  rate_distortion: ['distortion', 'lower_rate_bits', 'upper_rate_bits', 'gap_bits'],
+  quantization: ['distortion', 'container_bits_per_sample', 'gaussian_lower_rate_bits', 'fit_converged'],
+  source_channel: ['digital_mse', 'digital_map_mse', 'digital_mmse_mse', 'analog_mse'],
+  estimation: ['estimate_bits', 'true_bits', 'seconds'],
+  neural: ['estimate_bits', 'true_bits', 'batch_ceiling_bits', 'selected_step'],
+  bottleneck: ['i_input_bits', 'i_label_bits', 'objective_bits', 'fixed_point_change', 'converged'],
+  sources: ['weak_fraction', 'strong_fraction', 'source_rate', 'subsampled_rate'],
+  statistics: ['log_exact_probability', 'log_is_probability', 'naive_hits', 'relative_standard_error', 'false_alarm', 'log_miss_probability', 'miss_exponent_bits', 'stein_limit_bits'],
+  channels: ['lower_bits', 'upper_bits', 'gap_bits', 'capacity_bits_per_parallel_use', 'capacity', 'second_order_rate'],
+  foundations: ['h_x', 'h_xy', 'h_x_given_y', 'mi_bits', 'pair_mi', 'conditional_mi', 'joint_to_last_mi', 'original_entropy', 'mixed_entropy', 'minimum_entropy', 'maximum_entropy', 'i_x_y', 'i_x_z', 'conditional_entropy', 'fano_upper_bits', 'expected_length', 'expected_cost', 'relaxed_lower_cost', 'first_mi', 'second_mi', 'mixture_mi']
+};
+
+function pretty(value) {
+  if (value === null || value === undefined) return 'Not applicable';
+  if (typeof value === 'boolean') return value ? 'Yes' : 'No';
+  if (Array.isArray(value)) return value.map(pretty).join(' … ');
+  if (typeof value === 'number') return Number.isInteger(value) ? String(value) : String(Number(value.toPrecision(6)));
+  return String(value);
+}
+
+function label(key) {
+  return metricLabels[key] || key.replaceAll('_', ' ');
+}
+
+function options(id, values, preferred) {
+  const select = el(id);
+  select.replaceChildren();
+  for (const value of [...new Set(values)]) {
+    const option = document.createElement('option');
+    option.value = String(value);
+    option.textContent = id === 'field' ? rows.find(r => r.family === value).label : id === 'method' ? rows.find(r => r.method === value).method_label : String(value);
+    select.append(option);
+  }
+  if (preferred !== undefined && [...select.options].some(o => o.value === String(preferred))) select.value = String(preferred);
+  select.disabled = select.options.length < 2;
+}
+
+function subset(level) {
+  return rows.filter(r => r.family === el('field').value && (!level || r.scenario === el('scenario').value) && (level < 2 || r.method === el('method').value) && (level < 3 || r.setting === el('setting').value));
+}
+
+function cascade(start, preferred = {}) {
+  if (start <= 0) options('scenario', subset(0).map(r => r.scenario), preferred.scenario);
+  if (start <= 1) options('method', subset(1).map(r => r.method), preferred.method);
+  if (start <= 2) options('setting', subset(2).map(r => r.setting), preferred.setting);
+  if (start <= 3) options('seed', subset(3).map(r => r.seed), preferred.seed);
+  render();
+}
+
+function scalarMetric(key, value) {
+  const card = document.createElement('div');
+  card.className = 'metric';
+  card.dataset.metric = key;
+  card.dataset.value = JSON.stringify(value);
+  const title = document.createElement('div');
+  title.className = 'metric-label';
+  title.textContent = label(key);
+  const number = document.createElement('div');
+  number.className = 'metric-value';
+  number.textContent = pretty(value);
+  card.append(title, number);
+  return card;
+}
+
+function comparisonRows(current) {
+  let result = rows.filter(r => r.family === current.family && r.scenario === current.scenario);
+  if (['coding', 'lossless', 'quantization', 'estimation'].includes(current.family)) result = result.filter(r => r.setting === current.setting);
+  if (current.family === 'neural') {
+    result = result.concat(rows.filter(r => r.family === 'estimation' && r.scenario === current.scenario && r.config.samples === current.config.test_size));
+  }
+  return result;
+}
+
+function render() {
+  const selected = subset(3).find(r => String(r.seed) === el('seed').value);
+  if (!selected) throw new Error('No applicable recorded experiment');
+  window.currentRecord = selected;
+  const family = selected.family,
+    m = selected.metrics;
+  el('resultField').textContent = selected.label;
+  el('resultTitle').textContent = selected.scenario + ' · ' + selected.method_label;
+  el('question').textContent = context[family][0];
+  el('explanation').textContent = context[family][1];
+  el('selectionStatus').textContent = selected.setting + ' · seed ' + selected.seed + ' · ' + selected.key;
+  el('selectionStatus').dataset.key = selected.key;
+  const priority = (columns[family] || []).filter(k => m[k] !== undefined && m[k] !== null);
+  const other = Object.keys(m).filter(k => k !== 'scope' && !priority.includes(k) && m[k] !== null && ['number', 'boolean'].includes(typeof m[k]));
+  el('metrics').replaceChildren(...[...priority, ...other].slice(0, 4).map(k => scalarMetric(k, m[k])));
+  el('scope').textContent = m.scope || 'Exact finite distribution or numerically certified result. Assumptions and units are specified in the measurement contracts.';
+  el('photoView').hidden = family !== 'images';
+  el('plotView').hidden = family === 'images';
+  if (family === 'images') {
+    el('originalImage').src = selected.original;
+    el('decodedImage').src = selected.asset;
+    el('originalImage').alt = 'Original ' + selected.config.image + ' photograph';
+    el('decodedImage').alt = selected.config.image + ' decoded by ' + selected.method + ' at ' + selected.setting;
+    updateReveal();
+  } else {
+    el('experimentFigure').src = selected.asset;
+    el('experimentFigure').alt = selected.label + ' evidence for ' + selected.key;
+    el('figureCaption').textContent = 'Numerical evidence for this exact configuration and seed. Open the figure at full size to inspect its axes and legend.';
+  }
+  el('recordLink').href = selected.record;
+  el('dataLink').href = selected.data;
+  el('assetLink').href = selected.asset;
+  el('config').textContent = JSON.stringify(selected.config, null, 2);
+  const compare = comparisonRows(selected);
+  const keys = (columns[family] || []).filter(k => compare.some(r => r.metrics[k] !== undefined && r.metrics[k] !== null));
+  const head = el('comparison').querySelector('thead'),
+    body = el('comparison').querySelector('tbody');
+  head.replaceChildren();
+  body.replaceChildren();
+  const header = document.createElement('tr');
+  for (const title of ['Method / setting', 'Seed', ...keys.map(label)]) {
+    const th = document.createElement('th');
+    th.textContent = title;
+    th.scope = 'col';
+    header.append(th);
+  }
+  head.append(header);
+  for (const row of compare) {
+    const tr = document.createElement('tr');
+    tr.dataset.key = row.key;
+    if (row.key === selected.key) tr.className = 'selected';
+    const name = document.createElement('td'),
+      link = document.createElement('a');
+    link.href = row.record;
+    link.textContent = row.method_label + ' · ' + row.setting;
+    name.append(link);
+    tr.append(name);
+    const seed = document.createElement('td');
+    seed.textContent = String(row.seed);
+    tr.append(seed);
+    for (const key of keys) {
+      const td = document.createElement('td');
+      td.dataset.metric = key;
+      td.dataset.value = JSON.stringify(row.metrics[key] ?? null);
+      td.textContent = pretty(row.metrics[key]);
+      td.title = JSON.stringify(row.metrics[key] ?? null);
+      tr.append(td);
+    }
+    body.append(tr);
+  }
+  el('comparisonCount').textContent = compare.length + ' applicable recorded runs. Highlighted row is the selected experiment.';
+  el('comparisonScope').textContent = family === 'images' ? 'Same photograph, all recorded rate points. Compare actual bits/pixel rather than nominal quality numbers.' : family === 'neural' ? 'Same Gaussian law: neural training seeds and classical estimators at the same held-out sample size. Finite estimates are not certified bounds.' : ['coding', 'lossless', 'quantization', 'estimation'].includes(family) ? 'Same source or channel and recorded parameter setting; independent seeds are displayed separately.' : 'Same scenario, all recorded parameter settings. Units and solver limits remain explicit.';
+  window.selectionEvidence = {
+    key: selected.key,
+    record_sha256: selected.record_sha256,
+    asset_sha256: selected.asset_sha256,
+    comparison_keys: compare.map(r => r.key)
+  };
+}
+
+function updateReveal() {
+  const value = Number(el('reveal').value);
+  el('decodedImage').style.clipPath = 'inset(0 0 0 ' + value + '%)';
+  el('revealValue').textContent = value + '% original area; ' + (100 - value) + '% decoded area.';
+}
+
+function updateBinary() {
+  const p = Number(el('crossover').value);
+  const h = p === 0 || p === 1 ? 0 : -p * Math.log2(p) - (1 - p) * Math.log2(1 - p);
+  el('crossoverLabel').textContent = p.toFixed(2);
+  el('liveEntropy').textContent = pretty(h);
+  el('liveCapacity').textContent = pretty(1 - h);
+  el('liveEntropy').dataset.value = String(h);
+  el('liveCapacity').dataset.value = String(1 - h);
+}
+for (const study of dataset.studies) {
+  const figure = document.createElement('figure');
+  figure.className = 'figure';
+  const link = document.createElement('a');
+  link.href = '../' + study.file;
+  const img = document.createElement('img');
+  img.src = link.getAttribute('href');
+  img.alt = study.title;
+  link.append(img);
+  const caption = document.createElement('figcaption');
+  caption.textContent = study.scope;
+  figure.append(link, caption);
+  el('studyGallery').append(figure);
+}
+options('field', Object.keys(context), 'images');
+for (let i = 0; i < controls.length; i++) {
+  el(controls[i]).addEventListener('change', () => cascade(i));
+}
+el('reveal').addEventListener('input', updateReveal);
+el('crossover').addEventListener('input', updateBinary);
+cascade(0, {
+  scenario: 'Coffee',
+  method: 'cheng2020-anchor',
+  setting: 'point 3',
+  seed: 41
+});
+updateBinary();
+window.explorerReady = true;
+</script></body></html>

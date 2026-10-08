@@ -1,0 +1,915 @@
+# Navid Bagheri-Shouraki — MIT scientific source-code corpus
+
+# Original MIT source: MCMC_project/src/sampling_lab/targets.py
+"""Analytic, geometrically difficult and train-only Bayesian posterior targets."""
+
+from dataclasses import dataclass, field
+
+import numpy as np
+import torch
+from scipy.optimize import minimize
+from scipy.special import expit, logsumexp
+from sklearn.datasets import load_breast_cancer, load_diabetes
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+
+@dataclass
+class Target:
+    name: str
+    dim: int = 2
+    mean: np.ndarray = field(default_factory=lambda: np.array([2.0, -2.0]))
+    cov: np.ndarray = field(default_factory=lambda: np.array([[1.0, 0.95], [0.95, 1.0]]))
+    data: dict = field(default_factory=dict)
+
+    def __post_init__(self):
+        self.precision = np.linalg.inv(self.cov)
+        if self.name == "ring":
+            theta = np.arange(8) * 2 * np.pi / 8
+            self.centers = 3 * np.stack([np.cos(theta), np.sin(theta)], axis=1)
+
+    def log_prob(self, x):
+        x = np.asarray(x)
+        if self.name in ["gaussian", "perturbed", "regression"]:
+            d = x - self.mean
+            value = -0.5 * np.einsum("...i,ij,...j->...", d, self.precision, d)
+            return (
+                value + np.cos(x[..., 0]) + np.sin(x[..., 1]) if self.name == "perturbed" else value
+            )
+        if self.name == "ring":
+            distance = x[..., None, :] - self.centers
+            return (
+                logsumexp(-0.5 * (distance**2).sum(-1) / 0.35**2, axis=-1)
+                - np.log(8)
+                - np.log(2 * np.pi * 0.35**2)
+            )
+        if self.name == "banana":
+            u, v = x[..., 0], x[..., 1] - 0.25 * (x[..., 0] ** 2 - 4)
+            return -0.5 * (u**2 / 4 + v**2)
+        if self.name == "funnel":
+            y, z = x[..., 0], x[..., 1]
+            with np.errstate(over="ignore", invalid="ignore"):
+                return -0.5 * y**2 / 9 - 0.5 * y - 0.5 * z**2 * np.exp(-y)
+        if self.name == "funnel_noncentered":
+            return -0.5 * x[..., 0] ** 2 / 9 - 0.5 * x[..., 1] ** 2
+        if self.name == "logistic":
+            logits = np.einsum("ni,...i->...n", self.data["X_train"], x)
+            return (self.data["y_train"] * logits - np.logaddexp(0, logits)).sum(-1) - 0.5 * (
+                (x / 2.5) ** 2
+            ).sum(-1)
+        raise ValueError(self.name)
+
+    def gradient(self, x, rng=None, batch_size=None):
+        x = np.asarray(x)
+        if self.name in ["gaussian", "perturbed", "regression"]:
+            result = -(x - self.mean) @ self.precision
+            if self.name == "perturbed":
+                result += np.array([-np.sin(x[0]), np.cos(x[1])])
+            return result
+        if self.name == "ring":
+            delta = x - self.centers
+            logw = -0.5 * (delta**2).sum(1) / 0.35**2
+            weights = np.exp(logw - logsumexp(logw))
+            return -(weights[:, None] * delta).sum(0) / 0.35**2
+        if self.name == "banana":
+            u, v = x[0], x[1] - 0.25 * (x[0] ** 2 - 4)
+            return np.array([-u / 4 + 0.5 * u * v, -v])
+        if self.name == "funnel":
+            with np.errstate(over="ignore", invalid="ignore"):
+                return np.array(
+                    [-x[0] / 9 - 0.5 + 0.5 * x[1] ** 2 * np.exp(-x[0]), -x[1] * np.exp(-x[0])]
+                )
+        if self.name == "funnel_noncentered":
+            return np.array([-x[0] / 9, -x[1]])
+        if self.name == "logistic":
+            X, y = self.data["X_train"], self.data["y_train"]
+            scale = 1.0
+            if batch_size:
+                if rng is None:
+                    raise ValueError("Minibatches need an explicit generator")
+                idx = rng.choice(len(X), min(batch_size, len(X)), replace=False)
+                scale = len(X) / len(idx)
+                X, y = X[idx], y[idx]
+            return scale * X.T @ (y - expit(X @ x)) - x / 2.5**2
+        raise ValueError(self.name)
+
+    def torch_log_prob(self, x):
+        def as_tensor(a):
+            return torch.as_tensor(a, dtype=x.dtype, device=x.device)
+
+        if self.name in ["gaussian", "perturbed", "regression"]:
+            d = x - as_tensor(self.mean)
+            value = -0.5 * d @ as_tensor(self.precision) @ d
+            return value + x[0].cos() + x[1].sin() if self.name == "perturbed" else value
+        if self.name == "ring":
+            return (
+                torch.logsumexp(-0.5 * ((x - as_tensor(self.centers)) ** 2).sum(1) / 0.35**2, 0)
+                - np.log(8)
+                - np.log(2 * np.pi * 0.35**2)
+            )
+        if self.name == "banana":
+            return -0.5 * (x[0] ** 2 / 4 + (x[1] - 0.25 * (x[0] ** 2 - 4)) ** 2)
+        if self.name == "funnel":
+            return -0.5 * x[0] ** 2 / 9 - 0.5 * x[0] - 0.5 * x[1] ** 2 * torch.exp(-x[0])
+        if self.name == "funnel_noncentered":
+            return -0.5 * x[0] ** 2 / 9 - 0.5 * x[1] ** 2
+        logits = as_tensor(self.data["X_train"]) @ x
+        return (
+            as_tensor(self.data["y_train"]) * logits
+            - torch.logaddexp(torch.zeros_like(logits), logits)
+        ).sum() - 0.5 * (x / 2.5).square().sum()
+
+    def observable(self, samples):
+        samples = np.array(samples, copy=True)
+        if self.name == "funnel_noncentered":
+            samples[..., 1] *= np.exp(samples[..., 0] / 2)
+        return samples
+
+    def reference(self, size, rng):
+        if self.name in ["gaussian", "regression"]:
+            return rng.multivariate_normal(self.mean, self.cov, size)
+        if self.name == "ring":
+            return self.centers[rng.integers(8, size=size)] + 0.35 * rng.normal(size=(size, 2))
+        if self.name == "banana":
+            z = rng.normal(size=(size, 2))
+            z[:, 0] *= 2
+            z[:, 1] += 0.25 * (z[:, 0] ** 2 - 4)
+            return z
+        if self.name in ["funnel", "funnel_noncentered"]:
+            z = rng.normal(size=(size, 2))
+            z[:, 0] *= 3
+            if self.name == "funnel":
+                z[:, 1] *= np.exp(z[:, 0] / 2)
+            return z
+        if self.name == "perturbed":
+            # Exact rejection draws under Gaussian envelope: cos+sin <= 2.
+            out = []
+            total = 0
+            while total < size:
+                proposal = rng.multivariate_normal(
+                    self.mean, self.cov, max(128, 2 * (size - total))
+                )
+                selected = proposal[
+                    np.log(rng.random(len(proposal)))
+                    < np.cos(proposal[:, 0]) + np.sin(proposal[:, 1]) - 2
+                ]
+                out.append(selected)
+                total += len(selected)
+            return np.concatenate(out)[:size]
+        raise ValueError("No exact posterior sampler; use independently diagnosed NUTS reference")
+
+    def start(self, chain, seed, profile="dispersed"):
+        rng = np.random.default_rng(seed + 900000 + chain)
+        if profile == "warm":
+            # Training-only MAP/known center, still independently jittered chains.
+            return self.mean + rng.normal(size=self.dim) * 0.1
+        if self.name in ["logistic", "regression"]:
+            return self.mean + rng.normal(size=self.dim) * 2
+        return (
+            np.array([[-5.0, -5.0], [-5.0, 5.0], [5.0, -5.0], [5.0, 5.0]])[chain % 4]
+            + rng.normal(size=2) * 0.2
+        )
+
+
+def load_target(name):
+    if name not in ["logistic", "regression"]:
+        return Target(name)
+    raw = load_breast_cancer() if name == "logistic" else load_diabetes()
+    idx = np.arange(len(raw.target))
+    train, other = train_test_split(
+        idx, test_size=0.3, random_state=741, stratify=raw.target if name == "logistic" else None
+    )
+    val, test = train_test_split(
+        other,
+        test_size=0.5,
+        random_state=742,
+        stratify=raw.target[other] if name == "logistic" else None,
+    )
+    scaler = StandardScaler().fit(raw.data[train])
+    arrays = {
+        f"X_{split}": np.column_stack([np.ones(len(ids)), scaler.transform(raw.data[ids])])
+        for split, ids in [("train", train), ("validation", val), ("test", test)]
+    }
+    if name == "regression":
+        ymean, ystd = raw.target[train].mean(), raw.target[train].std()
+        arrays.update(
+            {
+                f"y_{split}": (raw.target[ids] - ymean) / ystd
+                for split, ids in [("train", train), ("validation", val), ("test", test)]
+            }
+        )
+        arrays.update(y_mean=ymean, y_std=ystd, noise_sigma=0.75)
+        X, y = arrays["X_train"], arrays["y_train"]
+        precision = X.T @ X / 0.75**2 + np.eye(X.shape[1]) / 4
+        cov = np.linalg.inv(precision)
+        mean = cov @ X.T @ y / 0.75**2
+    else:
+        arrays.update(
+            {
+                f"y_{split}": raw.target[ids]
+                for split, ids in [("train", train), ("validation", val), ("test", test)]
+            }
+        )
+        X, y = arrays["X_train"], arrays["y_train"]
+
+        def objective(w):
+            return np.logaddexp(0, X @ w).sum() - y @ (X @ w) + 0.5 * (w / 2.5) @ (w / 2.5)
+
+        def gradient(w):
+            return X.T @ (expit(X @ w) - y) + w / 2.5**2
+
+        result = minimize(
+            objective, np.zeros(X.shape[1]), jac=gradient, method="BFGS", options={"gtol": 1e-7}
+        )
+        if np.linalg.norm(gradient(result.x), ord=np.inf) > 1e-5:
+            raise RuntimeError("MAP solve did not reach declared gradient tolerance")
+        mean = result.x
+        p = expit(X @ mean)
+        cov = np.linalg.inv(X.T @ (p[:, None] * (1 - p[:, None]) * X) + np.eye(X.shape[1]) / 2.5**2)
+    arrays.update(
+        train_indices=train,
+        validation_indices=val,
+        test_indices=test,
+        feature_names=raw.feature_names,
+        scaler_mean=scaler.mean_,
+        scaler_scale=scaler.scale_,
+    )
+    return Target(name, len(mean), mean, cov, arrays)
+
+# Original MIT source: MCMC_project/src/sampling_lab/samplers.py
+"""Owned NumPy kernels; adaptation occurs exclusively during warm-up.
+
+Langevin uses x' = x + eta P grad(log pi) + sqrt(2 eta) chol(P) z.
+Hamiltonian momentum covariance is inv(P), with kinetic p.T P p / 2.
+Rejected/nonfinite proposals retain the previous state; repetitions are saved.
+"""
+
+import time
+
+import numpy as np
+from scipy.special import logsumexp
+
+METHODS = (
+    "rwm",
+    "adaptive_rwm",
+    "gibbs",
+    "slice",
+    "ula",
+    "mala",
+    "hmc",
+    "adaptive_hmc",
+    "parallel_tempering",
+    "sgld",
+    "sghmc",
+    "nuts",
+)
+
+
+def leapfrog(target, x, p, step_size, steps, preconditioner):
+    x, p = np.array(x, copy=True), np.array(p, copy=True)
+    p += step_size / 2 * target.gradient(x)
+    for i in range(steps):
+        x += step_size * (preconditioner @ p)
+        with np.errstate(over="ignore", invalid="ignore"):
+            gradient = target.gradient(x)
+        if not np.isfinite(x).all() or not np.isfinite(gradient).all():
+            return x, p, False
+        p += step_size * (0.5 if i == steps - 1 else 1) * gradient
+    return x, -p, True
+
+
+def mala_log_ratio(target, old, new, eta, preconditioner):
+    inverse = np.linalg.inv(preconditioner)
+    forward = new - old - eta * preconditioner @ target.gradient(old)
+    reverse = old - new - eta * preconditioner @ target.gradient(new)
+    return (
+        target.log_prob(new)
+        - target.log_prob(old)
+        + (forward @ inverse @ forward - reverse @ inverse @ reverse) / (4 * eta)
+    )
+
+
+def gaussian_gibbs(target, x, rng):
+    precision = target.precision
+    for k in range(len(x)):
+        conditional = (
+            target.mean[k]
+            - (precision[k] @ (x - target.mean) - precision[k, k] * (x[k] - target.mean[k]))
+            / precision[k, k]
+        )
+        x[k] = conditional + rng.normal() / np.sqrt(precision[k, k])
+    return x
+
+
+def coordinate_slice(target, x, rng, width=1.0, max_steps=128):
+    for k in rng.permutation(len(x)):
+        level = target.log_prob(x) + np.log(rng.random())
+        left = x[k] - width * rng.random()
+        right = left + width
+        j = rng.integers(max_steps)
+        remaining = max_steps - 1 - j
+        z = x.copy()
+        while j > 0:
+            z[k] = left
+            if target.log_prob(z) <= level:
+                break
+            left -= width
+            j -= 1
+        while remaining > 0:
+            z[k] = right
+            if target.log_prob(z) <= level:
+                break
+            right += width
+            remaining -= 1
+        original = x[k]
+        for _ in range(10000):
+            proposal = rng.uniform(left, right)
+            z[k] = proposal
+            if target.log_prob(z) >= level:
+                x = z.copy()
+                break
+            if proposal < original:
+                left = proposal
+            else:
+                right = proposal
+        else:
+            raise RuntimeError("Slice shrinkage failed; no transition silently skipped")
+    return x
+
+
+def run_chain(
+    target, method, start, draws, warmup, step_size, seed, leapfrog_steps=12, preconditioned=False
+):
+    if method not in METHODS or method == "nuts":
+        raise ValueError("Use reference.run_nuts for the maintained NUTS implementation")
+    if min(draws, step_size, leapfrog_steps) < 1e-12 or warmup < 0:
+        raise ValueError("Invalid sampler settings")
+    if method == "gibbs" and target.name not in ["gaussian", "regression", "ring"]:
+        raise ValueError("Only targets with exact implemented conditionals support Gibbs")
+    if method in ["sgld", "sghmc"] and target.name != "logistic":
+        raise ValueError("Stochastic likelihood gradients are defined for logistic data only")
+    rng = np.random.default_rng(seed)
+    x = np.asarray(start, dtype=float).copy()
+    P = np.array(target.cov if preconditioned else np.eye(target.dim), copy=True)
+    cholesky = np.linalg.cholesky(P)
+    momentum_chol = np.linalg.cholesky(np.linalg.inv(P))
+    eta = float(step_size)
+    log_eta = np.log(eta)
+    mu = np.log(10 * eta)
+    hbar = 0.0
+    smooth = log_eta
+    samples = []
+    accept = []
+    energies = []
+    divergences = []
+    steps_record = []
+    work = 0
+    history = []
+    nonfinite = 0
+    tempered = np.tile(x, (8, 1))
+    betas = np.geomspace(1, 0.03, 8)
+    swap_attempts = 0
+    swap_accepts = 0
+    velocity = np.zeros(target.dim)
+    started = time.perf_counter()
+    for iteration in range(draws + warmup):
+        proposed = x.copy()
+        log_ratio = 0.0
+        divergent = False
+        energy = float(-target.log_prob(x))
+        iteration_work = 0
+        if method in ["rwm", "adaptive_rwm"]:
+            proposed = x + eta * cholesky @ rng.normal(size=target.dim)
+            log_ratio = target.log_prob(proposed) - target.log_prob(x)
+        elif method in ["ula", "mala", "sgld"]:
+            current_eta = eta if method != "sgld" else eta / (1 + iteration / 1000) ** 0.55
+            gradient = target.gradient(x, rng, 64 if method == "sgld" else None)
+            iteration_work += 1
+            proposed = (
+                x
+                + current_eta * (P @ gradient)
+                + np.sqrt(2 * current_eta) * cholesky @ rng.normal(size=target.dim)
+            )
+            if method == "mala":
+                log_ratio = mala_log_ratio(target, x, proposed, eta, P)
+                iteration_work += 2
+        elif method in ["hmc", "adaptive_hmc"]:
+            p = momentum_chol @ rng.normal(size=target.dim)
+            energy = float(-target.log_prob(x) + 0.5 * p @ P @ p)
+            # Random trajectory length helps avoid resonant fixed integration times.
+            nsteps = int(rng.integers(max(1, leapfrog_steps // 2), leapfrog_steps + 1))
+            proposed, new_p, valid = leapfrog(target, x, p, eta, nsteps, P)
+            iteration_work += nsteps + 1
+            with np.errstate(over="ignore", invalid="ignore"):
+                delta = -target.log_prob(proposed) + 0.5 * new_p @ P @ new_p - energy
+            divergent = not valid or not np.isfinite(delta) or abs(delta) > 1000
+            log_ratio = -delta if valid else -np.inf
+        elif method == "gibbs":
+            if target.name == "ring":
+                logs = -0.5 * ((x - target.centers) ** 2).sum(1) / 0.35**2
+                label = rng.choice(8, p=np.exp(logs - logsumexp(logs)))
+                proposed = target.centers[label] + 0.35 * rng.normal(size=2)
+            else:
+                proposed = gaussian_gibbs(target, x.copy(), rng)
+        elif method == "slice":
+            proposed = coordinate_slice(target, x.copy(), rng, eta)
+        elif method == "parallel_tempering":
+            for replica, beta in enumerate(betas):
+                candidate = tempered[replica] + eta / np.sqrt(beta) * cholesky @ rng.normal(
+                    size=target.dim
+                )
+                ratio = beta * (target.log_prob(candidate) - target.log_prob(tempered[replica]))
+                if np.log(rng.random()) < min(0, ratio):
+                    tempered[replica] = candidate
+            for k in range(iteration % 2, len(betas) - 1, 2):
+                ratio = (betas[k] - betas[k + 1]) * (
+                    target.log_prob(tempered[k + 1]) - target.log_prob(tempered[k])
+                )
+                swap_attempts += 1
+                if np.log(rng.random()) < min(0, ratio):
+                    tempered[[k, k + 1]] = tempered[[k + 1, k]]
+                    swap_accepts += 1
+            proposed = tempered[0].copy()
+        elif method == "sghmc":
+            # Momentum Euler integrator, friction .05, B=0 approximation. Gradient
+            # noise is not estimated/cancelled: this is explicitly approximate SGHMC.
+            current_eta = eta / (1 + iteration / 1000) ** 0.55
+            velocity = (
+                0.95 * velocity
+                + current_eta * target.gradient(x, rng, 64)
+                + np.sqrt(2 * 0.05 * current_eta) * rng.normal(size=target.dim)
+            )
+            proposed = x + velocity
+            iteration_work += 1
+        finite = (
+            np.isfinite(proposed).all()
+            and np.isfinite(log_ratio)
+            and np.isfinite(target.log_prob(proposed))
+        )
+        probability = float(np.exp(min(0, log_ratio))) if finite else 0.0
+        accepted = finite and np.log(rng.random()) < min(0, log_ratio)
+        if accepted:
+            x = proposed
+        if not finite:
+            nonfinite += 1
+            if method == "sghmc":
+                velocity *= 0
+        if iteration < warmup:
+            history.append(x.copy())
+            if method == "adaptive_rwm":
+                log_eta += (iteration + 10) ** (-0.6) * (probability - 0.234)
+                eta = np.exp(np.clip(log_eta, -12, 2))
+            if method == "adaptive_hmc":
+                t = iteration + 1
+                hbar = (1 - 1 / (t + 10)) * hbar + (0.8 - probability) / (t + 10)
+                log_eta = mu - np.sqrt(t) * hbar / 0.05
+                eta = np.exp(np.clip(log_eta, -12, 1))
+                smooth = t ** (-0.75) * log_eta + (1 - t ** (-0.75)) * smooth
+                # One warmup-only diagonal geometry window, followed by renewed
+                # dual averaging. The reported sampling kernel is fixed thereafter.
+                if t == warmup // 2 and len(history) >= 100:
+                    variance = np.var(np.asarray(history)[-min(t, 500) :], axis=0)
+                    P = np.diag(np.clip(variance, 1e-3, 100))
+                    cholesky = np.linalg.cholesky(P)
+                    momentum_chol = np.linalg.cholesky(np.linalg.inv(P))
+                    mu = np.log(10 * eta)
+                    hbar = 0.0
+                    smooth = np.log(eta)
+                if t == warmup:
+                    eta = np.exp(np.clip(smooth, -12, 1))
+        else:
+            samples.append(x.copy())
+            accept.append(accepted)
+            energies.append(energy)
+            divergences.append(divergent)
+            steps_record.append(eta if method not in ["sgld", "sghmc"] else current_eta)
+        work += iteration_work
+    return dict(
+        samples=np.asarray(samples),
+        accepted=np.asarray(accept),
+        energy=np.asarray(energies),
+        divergent=np.asarray(divergences),
+        step_size=np.asarray(steps_record),
+        final_preconditioner=P,
+        gradient_evaluations=work,
+        seconds=time.perf_counter() - started,
+        nonfinite_proposals=nonfinite,
+        swap_accepts=swap_accepts,
+        swap_attempts=swap_attempts,
+        warmup=np.asarray(history),
+    )
+
+# Original MIT source: MCMC_project/src/sampling_lab/ebm.py
+"""Normalizable Gaussian-base energy models and negative-phase learning.
+
+CD-k, persistent CD, replay and quadrature maximum likelihood share data,
+network, update count and validation-only selection. Finite-chain negative
+phases are approximate; bounded residual energies make integrability explicit.
+"""
+
+import copy
+import json
+import time
+from pathlib import Path
+
+import numpy as np
+import torch
+from sklearn.datasets import make_moons
+from torch import nn
+
+from .artifacts import environment, sha256, source_identity, write_json
+
+METHODS = ("cd1", "cd10", "pcd10", "pcd50", "replay20", "quadrature_mle")
+
+
+class Energy(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.network = nn.Sequential(
+            nn.Linear(2, 64), nn.Tanh(), nn.Linear(64, 64), nn.Tanh(), nn.Linear(64, 1)
+        )
+
+    def forward(self, x):
+        return 0.5 * (x / 3).square().sum(-1) + 8 * torch.tanh(self.network(x).squeeze(-1) / 8)
+
+
+def langevin(model, initial, steps, eta, rng):
+    x = initial.detach().clone()
+    for _ in range(steps):
+        x.requires_grad_(True)
+        gradient = torch.autograd.grad(model(x).sum(), x)[0]
+        noise = torch.randn(x.shape, device=x.device, generator=rng)
+        x = (x - eta * gradient + np.sqrt(2 * eta) * noise).detach()
+        if not torch.isfinite(x).all():
+            raise FloatingPointError("Nonfinite EBM negative chain")
+    return x
+
+
+def grid_geometry(size=81, limit=14, device="cpu"):
+    axis = torch.linspace(-limit, limit, size, dtype=torch.float32, device=device)
+    y, x = torch.meshgrid(axis, axis, indexing="ij")
+    grid = torch.stack([x.flatten(), y.flatten()], 1)
+    weights = torch.ones(size, size, device=device, dtype=torch.float64)
+    weights[[0, -1]] *= 0.5
+    weights[:, [0, -1]] *= 0.5
+    weights *= (2 * limit / (size - 1)) ** 2
+    return grid, weights.flatten()
+
+
+def log_partition(model, size=81, limit=14):
+    grid, weights = grid_geometry(size, limit, next(model.parameters()).device)
+    return torch.logsumexp(-model(grid) + weights.log(), 0)
+
+
+def dataset(task):
+    rng = np.random.default_rng(222000)
+    if task == "mixture":
+        angle = np.arange(8) * 2 * np.pi / 8
+        centers = 3 * np.stack([np.cos(angle), np.sin(angle)], 1)
+        data = centers[rng.integers(8, size=10000)] + 0.35 * rng.normal(size=(10000, 2))
+    elif task == "moons":
+        data, _ = make_moons(n_samples=10000, noise=0.08, random_state=222000)
+        data = (data - np.array([0.5, 0.25])) * 2
+    else:
+        raise ValueError("Unknown EBM task")
+    order = rng.permutation(len(data))
+    data = data[order].astype(np.float32)
+    return data[:8000], data[8000:9000], data[9000:]
+
+
+def export(model, path):
+    np.savez_compressed(
+        path, **{k: v.detach().cpu().numpy() for k, v in model.state_dict().items()}
+    )
+    write_json(
+        Path(path).with_suffix(".json"),
+        dict(schema=1, base_scale=3, residual_bound=8, weights_sha256=sha256(path)),
+    )
+
+
+def load(path):
+    path = Path(path)
+    meta = json.loads(path.with_suffix(".json").read_text())
+    if (
+        meta.get("schema") != 1
+        or meta["base_scale"] != 3
+        or meta["residual_bound"] != 8
+        or meta["weights_sha256"] != sha256(path)
+    ):
+        raise ValueError("Unsupported or changed energy model")
+    model = Energy().eval()
+    with np.load(path, allow_pickle=False) as arrays:
+        if set(arrays) != set(model.state_dict()):
+            raise ValueError("Weight schema mismatch")
+        state = {}
+        for key, tensor in model.state_dict().items():
+            array = arrays[key]
+            if (
+                array.dtype != np.float32
+                or array.shape != tuple(tensor.shape)
+                or not np.isfinite(array).all()
+            ):
+                raise ValueError("Invalid EBM weights")
+            state[key] = torch.from_numpy(array.copy())
+    model.load_state_dict(state)
+    return model
+
+
+def train(config, output, source_root=Path("assets/source_data")):
+    task, method, seed = config["task"], config["method"], config["seed"]
+    if method not in METHODS:
+        raise ValueError("Unknown negative-phase method")
+    name = f"ebm_{task}_{method}_{seed}"
+    folder = Path(output) / name
+    source = source_identity()
+    if (folder / "metrics.json").exists():
+        old = json.loads((folder / "run.json").read_text())
+        if old["config"] != config or old["source_sha256"] != source:
+            raise ValueError("Existing evidence belongs to a different protocol/source")
+        assert sha256(source_root / (name + ".npz")) == old["numeric_sha256"]
+        print("Verified", name, flush=True)
+        return
+    if (folder / "run.json").exists():
+        raise ValueError("Incomplete run retained; use a new output")
+    write_json(
+        folder / "run.json",
+        dict(status="running", config=config, source_sha256=source, environment=environment()),
+    )
+    torch.set_num_threads(1)
+    torch.manual_seed(seed)
+    device = torch.device(config.get("device", "cpu"))
+    model = Energy().to(device)
+    optimizer = torch.optim.Adam(model.parameters(), lr=5e-4)
+    data_rng = torch.Generator(device=device).manual_seed(seed + 1000)
+    negative_rng = torch.Generator(device=device).manual_seed(seed + 2000)
+    train_data, validation, test = dataset(task)
+    positives = torch.as_tensor(train_data, device=device)
+    val = torch.as_tensor(validation, device=device)
+    test_tensor = torch.as_tensor(test, device=device)
+    persistent = 3 * torch.randn(1024, 2, device=device, generator=negative_rng)
+    best = copy.deepcopy(model.state_dict())
+    best_score = np.inf
+    best_step = 0
+    history = []
+    started = time.perf_counter()
+    negative_gradient_calls = 0
+    integration_grid, integration_weights = grid_geometry(81, 14, device)
+    for step in range(config["steps"] + 1):
+        if step % 100 == 0 or step == config["steps"]:
+            with torch.no_grad():
+                logZ = log_partition(model, 161, 14)
+                nll = (model(val) + logZ).mean().item()
+            if nll < best_score:
+                best_score = nll
+                best = copy.deepcopy(model.state_dict())
+                best_step = step
+            history.append(dict(step=step, validation_nll=nll))
+            print(name, step, nll, "best", best_step, flush=True)
+        if step == config["steps"]:
+            break
+        selected = torch.randperm(len(positives), device=device, generator=data_rng)[:128]
+        real = positives[selected]
+        if method == "quadrature_mle":
+            negative_loss = torch.logsumexp(-model(integration_grid) + integration_weights.log(), 0)
+            loss = model(real).mean() + negative_loss
+        else:
+            k = int("".join(c for c in method if c.isdigit()))
+            if method.startswith("cd"):
+                initial = real
+            else:
+                indices = torch.randperm(len(persistent), device=device, generator=data_rng)[:128]
+                initial = persistent[indices].clone()
+                if method == "replay20":
+                    refresh = torch.rand(len(initial), device=device, generator=negative_rng) < 0.05
+                    initial[refresh] = 3 * torch.randn(
+                        (int(refresh.sum()), 2), device=device, generator=negative_rng
+                    )
+            negative = langevin(model, initial, k, 0.02, negative_rng)
+            negative_gradient_calls += k
+            if not method.startswith("cd"):
+                persistent[indices] = negative
+            loss = model(real).mean() - model(negative.detach()).mean()
+        if not torch.isfinite(loss):
+            raise FloatingPointError("Nonfinite EBM objective")
+        optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        optimizer.step()
+    fitting_seconds = time.perf_counter() - started
+    model.load_state_dict(best)
+    model.eval()
+    with torch.no_grad():
+        partition = [
+            float(log_partition(model, size, limit))
+            for size, limit in [(161, 14), (321, 14), (401, 18)]
+        ]
+        nll = float((model(test_tensor) + partition[-1]).mean())
+        grid, weights = grid_geometry(161, 10, device)
+        density = torch.exp(-model(grid) - partition[-1])
+    initial = 3 * torch.randn(
+        1024, 2, device=device, generator=torch.Generator(device=device).manual_seed(333000)
+    )
+    # Longer independent negatives expose the fitted stationary geometry; they are
+    # approximate ULA draws and do not enter model selection or normalized NLL.
+    generated = langevin(
+        model, initial, 1000, 0.005, torch.Generator(device=device).manual_seed(444000)
+    )
+    tail_bound = 2 * np.pi * 9 * np.exp(8) * np.exp(-(18**2) / 18)
+    folder.mkdir(parents=True, exist_ok=True)
+    export(model, folder / "energy.npz")
+    with torch.no_grad():
+        torch.testing.assert_close(
+            load(folder / "energy.npz")(torch.as_tensor(test)),
+            model(test_tensor).cpu(),
+            rtol=0,
+            atol=0,
+        )
+    arrays = dict(
+        train=train_data,
+        validation=validation,
+        test=test,
+        generated=generated.cpu().numpy(),
+        grid=grid.cpu().numpy(),
+        density=density.cpu().numpy(),
+        history_steps=np.asarray([r["step"] for r in history]),
+        history_nll=np.asarray([r["validation_nll"] for r in history]),
+        persistent=persistent.cpu().numpy(),
+    )
+    source_root.mkdir(parents=True, exist_ok=True)
+    path = source_root / (name + ".npz")
+    np.savez_compressed(path, **arrays)
+    write_json(folder / "history.json", history)
+    write_json(
+        folder / "metrics.json",
+        dict(
+            config=config,
+            selected_step=best_step,
+            validation_nll=best_score,
+            test_nll=nll,
+            log_partition=partition[-1],
+            partition_refinements=partition,
+            partition_max_change=float(np.ptp(partition)),
+            absolute_partition_tail_bound_outside_square18=tail_bound,
+            integrability="E(x)=||x||²/18 + bounded residual in [-8,8]; outside-square18 partition contribution <= Gaussian outside-radius18 envelope; quadrature truncation bound is conservative. Finite-grid integration error is estimated by refinement, not rigorously bounded.",
+            fitting_seconds=fitting_seconds,
+            negative_gradient_evaluations=negative_gradient_calls,
+            model_sha256=sha256(folder / "energy.npz"),
+            selection="First minimum held-out normalized NLL at 100-update intervals, including initial and final; fixed 161-grid/±14. Test evaluated once at independently refined 401-grid/±18.",
+            scope="Owned 2D model study, 8000/1000/1000 fixed independent procedural draws. Equal optimizer updates, unequal negative-phase work. CD/PCD/replay and ULA finite-step bias are retained; generator draws are approximate and do not define NLL. No high-dimensional or image quality claim.",
+        ),
+    )
+    write_json(
+        folder / "run.json",
+        dict(
+            status="complete",
+            environment=environment(),
+            config=config,
+            source_sha256=source,
+            numeric_source=str(path),
+            numeric_sha256=sha256(path),
+        ),
+    )
+
+# Original MIT source: MCMC_project/src/sampling_lab/diagnostics.py
+"""Rank-normalized multichain diagnostics; finite chains never imply convergence."""
+
+import warnings
+
+import arviz as az
+import numpy as np
+from scipy.special import ndtri
+from scipy.stats import rankdata
+
+
+def summarize(samples, chains, reference=None):
+    samples = np.asarray(samples)
+    if (
+        samples.ndim != 3
+        or samples.shape[0] < 2
+        or samples.shape[1] < 20
+        or not np.isfinite(samples).all()
+    ):
+        raise ValueError("Diagnostics require finite [>=2 chains, >=20 draws, dimensions]")
+    posterior = az.from_dict(posterior={"position": samples})
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", RuntimeWarning)
+        rhat = np.asarray(az.rhat(posterior, method="rank")["position"])
+        ess_bulk = np.asarray(az.ess(posterior, method="bulk")["position"])
+        ess_tail = np.asarray(az.ess(posterior, method="tail")["position"])
+        mcse = np.asarray(az.mcse(posterior, method="mean")["position"])
+
+    def finite(a):
+        return [float(x) if np.isfinite(x) else None for x in a]
+
+    seconds = sum(c["seconds"] for c in chains)
+    cost = sum(c["gradient_evaluations"] for c in chains)
+    diagnostic = dict(
+        rank_rhat=finite(rhat),
+        bulk_ess=finite(ess_bulk),
+        tail_ess=finite(ess_tail),
+        mean_mcse=finite(mcse),
+        mean=samples.mean((0, 1)).tolist(),
+        standard_deviation=samples.reshape(-1, samples.shape[-1]).std(0, ddof=1).tolist(),
+        chain_means=samples.mean(1).tolist(),
+        draws_per_chain=samples.shape[1],
+        chains=samples.shape[0],
+        total_sampling_and_warmup_seconds=seconds,
+        gradient_evaluations_includes_warmup=cost,
+        min_bulk_ess_per_second=float(np.nanmin(ess_bulk) / seconds)
+        if np.isfinite(ess_bulk).any()
+        else None,
+        min_bulk_ess_per_gradient=float(np.nanmin(ess_bulk) / cost)
+        if cost and np.isfinite(ess_bulk).any()
+        else None,
+        divergences=sum(int(c["divergent"].sum()) for c in chains),
+        nonfinite_proposals=sum(c["nonfinite_proposals"] for c in chains),
+        convergence_flag=bool(
+            np.isfinite(rhat).all()
+            and (rhat < 1.01).all()
+            and (ess_bulk > 400).all()
+            and (ess_tail > 400).all()
+            and not any(c["divergent"].any() for c in chains)
+        ),
+    )
+    if all(c["energy"] is not None for c in chains):
+        energy = np.asarray([c["energy"] for c in chains])
+        diagnostic["energy_bfmi"] = [float(v) if np.isfinite(v) else None for v in az.bfmi(energy)]
+        diagnostic["bfmi_scope"] = (
+            "Meaningful for HMC with refreshed momentum; for other kernels stored potential is a trace diagnostic only"
+        )
+    else:
+        diagnostic["energy_bfmi"] = None
+        diagnostic["bfmi_scope"] = (
+            "Pyro public interface does not expose the paired momentum energy; no fabricated energy diagnostic"
+        )
+    if reference is not None:
+        reference = np.asarray(reference)
+        scale = reference.std(0, ddof=1)
+        diagnostic.update(
+            reference_mean=reference.mean(0),
+            standardized_mean_error=(samples.mean((0, 1)) - reference.mean(0)) / scale,
+            covariance_relative_error=float(
+                np.linalg.norm(
+                    np.cov(samples.reshape(-1, samples.shape[-1]).T) - np.cov(reference.T)
+                )
+                / np.linalg.norm(np.cov(reference.T))
+            ),
+        )
+    return diagnostic
+
+
+def split_rank_rhat_oracle(samples):
+    """Independent rank/folded split-Rhat for tests against the diagnostic library."""
+    samples = np.asarray(samples)
+    n = samples.shape[1] // 2
+    split = np.concatenate([samples[:, :n], samples[:, -n:]], axis=0)
+
+    def calculate(values):
+        ranks = rankdata(values.ravel()).reshape(values.shape)
+        normalized = ndtri((ranks - 3 / 8) / (values.size + 1 / 4))
+        W = np.mean(np.var(normalized, axis=1, ddof=1))
+        B = n * np.var(normalized.mean(1), ddof=1)
+        return np.sqrt(((n - 1) / n * W + B / n) / W) if W else np.nan
+
+    return max(calculate(split), calculate(np.abs(split - np.median(split))))
+
+# Original MIT source: MCMC_project/src/sampling_lab/posterior.py
+"""Portable posterior predictions from safe arrays; no private training weights."""
+
+import numpy as np
+from scipy.special import expit
+
+
+def predict(path, raw, target):
+    if target not in ["logistic", "regression"]:
+        raise ValueError("Unknown posterior family")
+    with np.load(path, allow_pickle=False) as arrays:
+        posterior = np.array(arrays["samples"]).reshape(-1, arrays["samples"].shape[-1])
+        mean, scale = arrays["scaler_mean"], arrays["scaler_scale"]
+        raw = np.asarray(raw, dtype=np.float64)
+        if raw.ndim != 2 or raw.shape[1] != len(mean) or not np.isfinite(raw).all():
+            raise ValueError("Finite raw features in the published feature order are required")
+        if (
+            posterior.shape[1] != len(mean) + 1
+            or not np.isfinite(posterior).all()
+            or (scale <= 0).any()
+        ):
+            raise ValueError("Invalid posterior/schema")
+        X = np.column_stack([np.ones(len(raw)), (raw - mean) / scale])
+        values = X @ posterior.T
+        if target == "logistic":
+            probabilities = expit(values)
+            return dict(
+                probability=probabilities.mean(1),
+                probability_credible_lower=np.quantile(probabilities, 0.025, axis=1),
+                probability_credible_upper=np.quantile(probabilities, 0.975, axis=1),
+                scope="Posterior uncertainty for probability of class 1; this is not a prediction interval for a binary outcome.",
+            )
+        mu = values.mean(1)
+        sigma = np.sqrt(values.var(1) + float(arrays["noise_sigma"]) ** 2)
+        ymean, ystd = float(arrays["y_mean"]), float(arrays["y_std"])
+        return dict(
+            mean=mu * ystd + ymean,
+            lower=(mu - 1.96 * sigma) * ystd + ymean,
+            upper=(mu + 1.96 * sigma) * ystd + ymean,
+            scope="95% Gaussian predictive moment approximation including fixed observation noise; raw Diabetes target units.",
+        )

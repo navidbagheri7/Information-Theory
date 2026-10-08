@@ -1,0 +1,17 @@
+include README.md LICENSE CITATION.cff CONTRIBUTING.md CHANGELOG.md .gitignore .gitattributes .nojekyll requirements-reference.txt index.html
+recursive-include configs *.json
+recursive-include docs *.md *.json *.csv *.html *.bib
+recursive-include assets *.png *.npz *.json *.txt *.bin
+recursive-include notebooks *.ipynb *.md
+recursive-include scripts *.py *.html *.js
+recursive-include tests *.py
+recursive-include results/reference *.json *.npz *.csv *.bin *.png
+include results/README.md
+recursive-include .github *.yml
+include legacy/manifest.json
+prune legacy/originals
+prune .local
+prune results/smoke
+recursive-exclude * __pycache__ *.py[cod]
+global-exclude *.pt *.pth *.log
+exclude docs/release_artifacts.json

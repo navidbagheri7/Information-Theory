@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "config": {
+    "family": "images",
+    "id": "chelsea_bmshj2018_hyperprior_1",
+    "image": "chelsea",
+    "method": "bmshj2018-hyperprior",
+    "point": 1,
+    "timing_repeats": 3,
+    "stochastic": false
+  },
+  "seed": 41,
+  "metrics": {
+    "estimated_bpp": 0.09890706835229413,
+    "payload_bpp": 0.1,
+    "model": {
+      "architecture": "bmshj2018-hyperprior",
+      "quality": 1,
+      "metric": "mse",
+      "url": "https://compressai.s3.amazonaws.com/models/v1/bmshj2018-hyperprior-1-7eb97409.pth.tar",
+      "checkpoint_sha256": "7eb97409f2dcdd46afdd3cab13d288b76aa787dc74cfc4794988aa7504bb71fe"
+    },
+    "encode_seconds": 0.12487417459487915,
+    "container_bpp": 0.12908496732026145,
+    "mse_rgb8": 83.92794458061002,
+    "psnr_db": 28.89173773620761,
+    "lossless_pixels": false,
+    "ssim_rgb": 0.75959931694066,
+    "ms_ssim_rgb": 0.9262915253639221,
+    "decode_seconds": 0.15327860321849585,
+    "encoded_bytes": 1580,
+    "encoded_sha256": "9c8418106d27fa36dbfd1c7dc38161a26172b5593cb312282fad6b7a82aa7a89",
+    "source_sha256": "cb789e8a65efdc507924c802140f36ac5a193f2927fac353b24a2a250ba0e691",
+    "decoded_sha256": "c64bd5504cd9a582ed92ed4deccae0bf551356ae30238193c9fe664852098c1f",
+    "image_shape": [
+      255,
+      384,
+      3
+    ],
+    "device": "cpu",
+    "scope": "Actual independently decodable stream, complete container rate, metrics on the same RGB8 decoded pixels shown in the gallery. Shared pretrained model weights are external and not amortized into per-image rates. Four licensed resized demonstrations, not a standard benchmark/SOTA claim."
+  },
+  "artifacts": {
+    "data.npz": "492b8290ffeb3db7333557bf09636064f1acbd6219be324ace49bcf412d947bd",
+    "decoded.png": "df3410c3efdafaff8d7cc501056156659929180233380885ac0c95ecebed2d65",
+    "image.bin": "9c8418106d27fa36dbfd1c7dc38161a26172b5593cb312282fad6b7a82aa7a89"
+  },
+  "python": "3.10.20",
+  "platform": "Linux-5.15.0-91-generic-x86_64-with-glibc2.35",
+  "versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.2",
+    "matplotlib": "3.10.9",
+    "Pillow": "12.2.0",
+    "zstandard": "0.25.0",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "compressai": "1.2.8",
+    "scikit-image": "0.25.2",
+    "pytorch-msssim": "1.0.0"
+  },
+  "source_sha256": {
+    "__init__.py": "c9e334d8a20202cfe880c9ee53af294e262e5175dabd6ae5208d5b1a799ec43c",
+    "artifacts.py": "aeb82b889f0de0ce1482ccebcf978394d158929ea64d6bc827ed7df5d136dc24",
+    "bottleneck.py": "3072c296644058f05ff0f3f3fe4dbdbc12c0900f427426a896b0752621ced458",
+    "channels.py": "0f7b0c7ea74f462527b3ecfc0b7f411c2c3f92683ead67ee55b0b84694e5ef88",
+    "cli.py": "46e8bcf4f6248d13f7e5ae4b2041e42f288161f465498fb6e0b8dfe89ae963bd",
+    "coding.py": "eb60e2df04ec9d65002c96a0297e343acf8120f2304e3195b324621978aa08ee",
+    "estimators.py": "3f57a951fac625a88de07d062417356fbe5c609f472990791d0caff28bae28c1",
+    "experiments.py": "93621e0f3bcda57a0305ce25cfd57f070c84e9e4cc098b18653c08101516561d",
+    "images.py": "ea2ff77d83693d86126d8f39153e7b8de3ab02129ee21124f9a4f84cc44116be",
+    "information.py": "efe21912c0e8dfce65deceafa53e1bbdaf8a680297606f8f97904c5d0bd29c3d",
+    "lossless.py": "015f9bc228d3dc311e7d6a6cb46faadab57dfa8565c21d4d8cbd48b1253a27bd",
+    "neural.py": "98caeb20680f4b3b57f1713d3a2ee86c74b8262b23cfbcb36150c27cae1cce1a",
+    "prepare.py": "d42a90b803e254b3667d019ec354c8a200c7450f0183dde2611a8802a900e4b1",
+    "quantization.py": "a425b48f052053901fea45ce67c58c7be179fca006ff55e300adbf1273b04a12",
+    "rate_distortion.py": "0b599bb750903a14fed819b14cdedb6b008b009df83d7a848475426b317b6492",
+    "sources.py": "29e93b1f968c9c4e01e86a531f18f53480a2599cae02935649ffc9fe06130326",
+    "statistics.py": "536827da68ac4862012ef777c86c00b17b60092a5f70ce30a11a82650bf1e2b9"
+  },
+  "resource_sha256": {
+    "default_configs/corpora/ecoli_excerpt.txt": "68a9ddaa3bc9f692a2da1e121d63111b840c65274650e21134af722617b155de",
+    "default_configs/corpora/manifest.json": "0202a0c045bb73f59c9f49e85a8576cc1f67a474b32f07ad1908f274fe7812e3",
+    "default_configs/corpora/owned_code.txt": "5077857f377ff7ee6087c78d8d54f65bdd73d2ee81cf3e7e1c3b4c45ed47552d",
+    "default_configs/quick.json": "79070085915a95ea045a114987107ef7b435fc8589e43bf6c954cfa462f82941",
+    "default_configs/reference.json": "f8653ed5038b660845d5a7adf9497137efd0dc0f045e39f09eba28c19ead2ef0"
+  },
+  "information_unit": "bits; natural-log optimization multipliers explicitly labelled"
+}

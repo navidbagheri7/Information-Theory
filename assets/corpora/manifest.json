@@ -1,0 +1,47 @@
+[
+  {
+    "name": "owned_code",
+    "source": "Owner's MIT Sampling & Energy Lab",
+    "components": [
+      {
+        "file": "targets.py",
+        "sha256": "3d24644fd0e2aeab3bbe8ec1f854d65e535dae734b4cab2ccfb072d211da93d6"
+      },
+      {
+        "file": "samplers.py",
+        "sha256": "584e701370c644875d03b5c8ae85a9569246bb1c648f45e013d8c0cfb8a46722"
+      },
+      {
+        "file": "ebm.py",
+        "sha256": "6782d44205da3c99433ea4aec5777d4c66ea6bc3ab33252e981109427854478a"
+      },
+      {
+        "file": "diagnostics.py",
+        "sha256": "28afaf39b55256f330f94decf712104df5a7ce6628a834258bec282c14b0afa7"
+      },
+      {
+        "file": "posterior.py",
+        "sha256": "05b718c1ba44da302d5b5baac48fdbd4350e3ef90dcbd227c6b0d469441ac8f1"
+      }
+    ],
+    "license": "MIT, see LICENSE",
+    "file": "owned_code.txt",
+    "bytes": 38192,
+    "sha256": "5077857f377ff7ee6087c78d8d54f65bdd73d2ee81cf3e7e1c3b4c45ed47552d"
+  },
+  {
+    "name": "ecoli_excerpt",
+    "accession": "NC_000913.3",
+    "assembly": "GCF_000005845.2",
+    "source": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz",
+    "upstream_md5": "c13d459b5caa702ff7e1f26fe44b8ad7",
+    "download_sha256": "a96d3cfa58c88d477013c768f90a11d2386d42a70d566abfb6d9013dcbd24255",
+    "full_sequence_length": 4641652,
+    "full_sequence_sha256": "e999dceccb76562d40e49a10d9e6d4cf1c05d184f4f80b92bb32d4a2420c11d0",
+    "selection": "First 200,000 chromosome bases, no FASTA header or newline",
+    "license": "Public NCBI reference sequence; factual biological sequence, source credited",
+    "file": "ecoli_excerpt.txt",
+    "bytes": 200000,
+    "sha256": "68a9ddaa3bc9f692a2da1e121d63111b840c65274650e21134af722617b155de"
+  }
+]

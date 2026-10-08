@@ -1,0 +1,86 @@
+[
+  {
+    "architecture": "bmshj2018-factorized",
+    "quality": 1,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/bmshj2018-factorized-prior-1-446d5c7f.pth.tar",
+    "checkpoint_sha256": "446d5c7f56d4d5108dc7fb2532cbe45bbf2e78f1778384b04526a8fcd641f5c5"
+  },
+  {
+    "architecture": "bmshj2018-factorized",
+    "quality": 3,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/bmshj2018-factorized-prior-3-5c6f152b.pth.tar",
+    "checkpoint_sha256": "5c6f152b2597de5e0f9143e8173d8c0529310aec523d07e9e9ced96825621d82"
+  },
+  {
+    "architecture": "bmshj2018-factorized",
+    "quality": 5,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/bmshj2018-factorized-prior-5-866ba797.pth.tar",
+    "checkpoint_sha256": "866ba797185ecdc85f8999f1476f99ef427f98faffb2da94a66c9b92a0a95d89"
+  },
+  {
+    "architecture": "bmshj2018-hyperprior",
+    "quality": 1,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/bmshj2018-hyperprior-1-7eb97409.pth.tar",
+    "checkpoint_sha256": "7eb97409f2dcdd46afdd3cab13d288b76aa787dc74cfc4794988aa7504bb71fe"
+  },
+  {
+    "architecture": "bmshj2018-hyperprior",
+    "quality": 3,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/bmshj2018-hyperprior-3-6d87be32.pth.tar",
+    "checkpoint_sha256": "6d87be32fcd1b2649edf01b6112acfcbb40a9b17088ed5030d0a310de58c430c"
+  },
+  {
+    "architecture": "bmshj2018-hyperprior",
+    "quality": 5,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/bmshj2018-hyperprior-5-f8b614e1.pth.tar",
+    "checkpoint_sha256": "f8b614e1147c05d4f09cf73eb21d151af5c90747f53648ef78384461d83c395b"
+  },
+  {
+    "architecture": "mbt2018-mean",
+    "quality": 1,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/mbt2018-mean-1-e522738d.pth.tar",
+    "checkpoint_sha256": "e522738dc4599d1538fcdb16e21aa56df9146d60e8e083542466b387c1960156"
+  },
+  {
+    "architecture": "mbt2018-mean",
+    "quality": 3,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/mbt2018-mean-3-723404a8.pth.tar",
+    "checkpoint_sha256": "723404a8a039371abe8a14f05160ee1614cf5e0a3fb2a4e5f7ba569b68c22601"
+  },
+  {
+    "architecture": "mbt2018-mean",
+    "quality": 5,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/mbt2018-mean-5-d504e8eb.pth.tar",
+    "checkpoint_sha256": "d504e8ebe7e6396efd0b5fd093a32136714fd7e4be03db389e6f07aee24fdb39"
+  },
+  {
+    "architecture": "cheng2020-anchor",
+    "quality": 1,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/cheng2020-anchor-1-dad2ebff.pth.tar",
+    "checkpoint_sha256": "dad2ebff44e86ae986d464d286d4c3531bd0f8c038233601bb8f3ad6dc7754e7"
+  },
+  {
+    "architecture": "cheng2020-anchor",
+    "quality": 3,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/cheng2020-anchor-3-e49be189.pth.tar",
+    "checkpoint_sha256": "e49be189d829b71be8cc4e70206ba8510db87ed90180ebd6eea6c79e00554132"
+  },
+  {
+    "architecture": "cheng2020-anchor",
+    "quality": 5,
+    "metric": "mse",
+    "url": "https://compressai.s3.amazonaws.com/models/v1/cheng2020-anchor-5-23852949.pth.tar",
+    "checkpoint_sha256": "23852949dc374141943b71aa0afc5457cf2383c540c9619086539c3e2ffc26e1"
+  }
+]

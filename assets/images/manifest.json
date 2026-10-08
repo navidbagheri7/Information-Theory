@@ -1,0 +1,70 @@
+[
+  {
+    "name": "astronaut",
+    "credit": "NASA, Eileen Collins photograph; public domain/no known restrictions",
+    "file": "astronaut.png",
+    "file_sha256": "5ac6ce81d96535adcb7e00b6545cc31c07fc68b0e41c4ada6c7107f6c5b874c1",
+    "pixels_sha256": "55ccb637a2f1c3981bf3c655d4de97d63c85845061e2e5d3be3b3431e20f8422",
+    "size": [
+      384,
+      384
+    ],
+    "original_size": [
+      512,
+      512
+    ],
+    "source": "https://scikit-image.org/docs/stable/api/skimage.data",
+    "preprocessing": "RGB8; preserve aspect ratio, cap maximum side using Lanczos"
+  },
+  {
+    "name": "coffee",
+    "credit": "Rachel Michetti, Pikolo Espresso Bar photograph; CC0",
+    "file": "coffee.png",
+    "file_sha256": "5b2efc17bdf030fcdd85b50bb81ad2dc13e1509c9d7527e8cf6a740de756c267",
+    "pixels_sha256": "a6de34c54d4d61de4ee0a93a3801504eb4ca088030cce9d081b860c38a67f813",
+    "size": [
+      384,
+      256
+    ],
+    "original_size": [
+      600,
+      400
+    ],
+    "source": "https://scikit-image.org/docs/stable/api/skimage.data",
+    "preprocessing": "RGB8; preserve aspect ratio, cap maximum side using Lanczos"
+  },
+  {
+    "name": "chelsea",
+    "credit": "Stefan van der Walt, Chelsea photograph; CC0",
+    "file": "chelsea.png",
+    "file_sha256": "abf9c2cd37c7646514abb3e2f4c40acb9e98a5568784c5656f8a39e6913a92c6",
+    "pixels_sha256": "cb789e8a65efdc507924c802140f36ac5a193f2927fac353b24a2a250ba0e691",
+    "size": [
+      384,
+      255
+    ],
+    "original_size": [
+      451,
+      300
+    ],
+    "source": "https://scikit-image.org/docs/stable/api/skimage.data",
+    "preprocessing": "RGB8; preserve aspect ratio, cap maximum side using Lanczos"
+  },
+  {
+    "name": "rocket",
+    "credit": "SpaceX, launch photograph; public domain",
+    "file": "rocket.png",
+    "file_sha256": "c70d22001d4e679e9dd5a3c7838b90ed51dcffa0294800c508a5e65eebc2da53",
+    "pixels_sha256": "892a34a7e7b0cad00896c25fc2e519e3758c9e630cdccc3f0e13f4042e741569",
+    "size": [
+      384,
+      256
+    ],
+    "original_size": [
+      640,
+      427
+    ],
+    "source": "https://scikit-image.org/docs/stable/api/skimage.data",
+    "preprocessing": "RGB8; preserve aspect ratio, cap maximum side using Lanczos"
+  }
+]

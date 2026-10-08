@@ -1,0 +1,167 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Course coverage and corrected statements</title><style>body{max-width:1100px;margin:32px auto;padding:0 20px;font:16px/1.65 system-ui;color:#132d48;background:#f8fafc}a{color:#007c88}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:14px;display:block;overflow:auto}th,td{border:1px solid #d7e4ec;padding:10px;vertical-align:top}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf3f7;padding:16px;border-radius:10px}code{font-size:.9em}img{max-width:100%;height:auto}</style></head><body><nav><a href="explorer.html">← Interactive lab</a> · <a href="course_coverage.md">Markdown source</a></nav><h1 id="course-coverage-and-corrected-statements">Course coverage and corrected statements</h1>
+<p>The supplied sources were reviewed locally: Cover and Thomas, <em>Elements of Information Theory</em>, first edition (1991); Stanford EE376A notes supplied as a 75-page January 2016 PDF; Michèle Wigger's four Mn908/MICAS exercise sheets from September–October 2024. Chapter numbers below refer to the supplied first edition. Original PDFs are preserved under ignored <code>legacy/originals</code>; their hashes are in <a href="../legacy/manifest.json">the manifest</a>. This guide contains new explanations and implementation mappings, rather than redistributing course materials.</p>
+<p>A theoretical exercise may be best answered by a proof plus a numerical example. A finite simulation illustrates a theorem; it does not replace its proof.</p>
+<h2 id="sheet-1-entropy-and-dependence">Sheet 1 — entropy and dependence</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Result and implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, joint PMF</td>
+<td><code>foundations/joint_entropy</code>: H(X)=1, H(X,Y)=1.5, H(X</td>
+</tr>
+<tr>
+<td>2, functions</td>
+<td>Chain rule gives H(X,f(X))=H(X) and also H(f(X))+H(X</td>
+</tr>
+<tr>
+<td>3, parity</td>
+<td>Exact enumeration for n=2,3,10. Pair MI is one bit for n=2 and zero for n&gt;2. I(X1;X2</td>
+</tr>
+<tr>
+<td>4, conditioning</td>
+<td>If X=Y=Z is a fair bit, MI drops from one to zero after conditioning. If X and Y are independent fair bits and Z=X XOR Y, MI rises from zero to one. Conditioning is not monotone for mutual information. The n=3 parity case implements the second example.</td>
+</tr>
+<tr>
+<td>5.1, mixing</td>
+<td>Averaging two masses is the midpoint of a PMF and its transposition. Entropy concavity and permutation invariance imply entropy cannot decrease. The configured uniform-mixture family illustrates repeated mass equalization.</td>
+</tr>
+<tr>
+<td>5.2, fixed masses</td>
+<td>Let s=1-p1-pm. The maximum puts s/(m-2) on every remaining symbol; the minimum puts all s on one remaining symbol, with zeros elsewhere. Concavity proves the minimum occurs at a simplex vertex; Jensen proves the maximum. Both feasible extremizers are saved.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sheet-2-compression-and-sources">Sheet 2 — compression and sources</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Result and implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, prefix codes</td>
+<td>Owned Huffman, Shannon and exact exhaustive feasible-length oracle. The specified code has expected length 2.5 bits and is optimal. It is not a greedy Huffman tree for these weights: the smallest 1/24 leaf is paired with 1/12 instead of a remaining 1/16 leaf. Optimal codes need not be obtainable from the particular greedy merge rule.</td>
+</tr>
+<tr>
+<td>2, nearly one-bit redundancy</td>
+<td>A two-symbol source <code>(1-delta,delta)</code> has optimal integer expected length one. Its entropy tends to zero as positive delta tends to zero, so redundancy approaches one bit. Do not use delta=0: a singleton framed alphabet may have an empty codeword.</td>
+</tr>
+<tr>
+<td>3, weighted costs</td>
+<td>Put a_i=p_i<em>c_i, A=sum a_i. The real-valued optimum is l_i=log2(A/a_i), cost A</em>H(a/A). Huffman on weights a_i minimizes integer weighted cost. Rounding the relaxed lengths upward is feasible and gives cost strictly below the relaxed cost plus A for a nontrivial supported alphabet. The weighted and ordinary cases save weights, lengths, codewords and bounds.</td>
+</tr>
+<tr>
+<td>4, general stationary processes</td>
+<td>All three transformed processes are stationary. Overlapping pairs Y have entropy rate H_X per pair; nonoverlapping pairs Z have rate 2H_X per pair. For V=X_(2i), H_X &lt;= H_V &lt;= 2H_X, per subsampled output. One inequality follows because the even sequence is a function of a 2n-block; the other follows by splitting the whole block into odd/even subsequences and using stationarity and subadditivity. Entropy rates of V are not automatically computable from a one-step transition matrix for a general process.</td>
+</tr>
+<tr>
+<td>5, Markov example</td>
+<td>Stationary law <code>(3/7,4/7)</code>, rate 0.9649839289 bits/output. Subsampling is Markov with P squared, rate 0.9846718866 bits/subsampled output. Adjacent swaps are not first-order Markov: the saved conditional-MI witness is positive. They preserve rate because block permutations are invertible and boundary effects vanish. Anchored sums are invertible via X_k=Z_k-X_(k-1), preserve rate, but have a positive non-Markov witness. See <code>sources.transformation_examples</code>.</td>
+</tr>
+<tr>
+<td>6, window LZ</td>
+<td><code>lossless.py</code> supplies an explicit bounded-window LZ77 encoder/decoder and real rate measurements. The sheets do not specify the class token/integer framing completely. The supplied encoded bitstring therefore has no defensible unique decoded answer here. Exact class-format reproduction requires those missing conventions; this limitation is stated, not filled with an invented result. The two input strings can be round-tripped under the documented owned format.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sheet-3-typicality-and-channels">Sheet 3 — typicality and channels</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Result and implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1, strong implies weak</td>
+<td>On supported symbols, absolute surprisal deviation is bounded by <code>(epsilon/alphabet_size)*sum_a abs(log2 Q(a))</code>, so it tends to zero with epsilon. The sheet's global codomain <code>[0,1]</code> is too restrictive for arbitrary Q and all epsilon: for Q=(0.1,0.9), a sequence with frequencies (0.6,0.4) is strongly 1-typical under the sheet's convention, but its surprisal deviation is 0.5*log2(9)=1.58496 bits. The theorem is the local implication for sufficiently small epsilon; use the displayed linear bound with a nonnegative real codomain. Zero-mass symbols are excluded.</td>
+</tr>
+<tr>
+<td>1.2, reverse implication</td>
+<td>A uniform source gives constant surprisal for every sequence. Even an all-identical-symbol sequence is weakly typical with tolerance zero and need not be strongly typical. Exact multinomial-count simulations compare both definitions.</td>
+</tr>
+<tr>
+<td>2, course channels</td>
+<td>W1 rows <code>(1,0,0)</code>, <code>(1/2,1/2,0)</code>, <code>(0,0,1)</code>; C=log2(9/4), maximizing input <code>(1/3,2/9,4/9)</code>. W2 rows <code>(1,0,0)</code>, <code>(1/2,1/4,1/4)</code>, <code>(0,1/2,1/2)</code>; C=1. Distinguishing input 0 from input 2 achieves one bit. W2=W1*T where T leaves output 0 unchanged and splits both other symbols uniformly between outputs 1/2. Data processing bounds C2 by C1; direct reduction to a binary observation establishes C2 exactly. Numerical solvers retain certified bounds.</td>
+</tr>
+<tr>
+<td>3, Z channel</td>
+<td>For crossover 1/2, capacity log2(5/4), maximizing input <code>(0.6,0.4)</code>. General crossover curves are also evaluated.</td>
+</tr>
+<tr>
+<td>4, symmetry</td>
+<td>BSC is symmetric. The configured 2x4 weakly symmetric example has row permutations and equal column sums, but columns are not all permutations. Row entropies are equal, so H(Y</td>
+</tr>
+<tr>
+<td>5, strictness</td>
+<td>The statements without 'strict' are valid: MI is concave in input PMF and convex in channel law, and capacity is convex in channel law as a supremum of convex functions. The blanket strict claims are false. Any input-independent channel has zero MI for all input PMFs. Two distinct input-independent channels and their mixture have zero MI and capacity, giving equality in convexity. The explicit counterexample is saved and tested.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sheet-4-side-information-and-distortion">Sheet 4 — side information and distortion</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Result and implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, jammer</td>
+<td>Unknown state gives effective crossover <code>q*epsilon+(1-q)/2</code> and capacity <code>1-Hb(effective crossover)</code>. Decoder-known state gives <code>q*(1-Hb(epsilon))</code>. With both sides informed, communicate only on free positions using a capacity-approaching BSC code; their asymptotic frequency q gives the same rate. The unknown/known discrete channels are evaluated numerically.</td>
+</tr>
+<tr>
+<td>2, symbol-error converse</td>
+<td>Block error tending to zero implies average symbol error tends to zero, since each symbol error is contained in the block-error event. Chain rule, dropping conditioning, symbolwise Fano and concavity of Hb give <code>H(U^K|Z^K)/K &lt;= Hb(Pb)+Pb*log2(a-1)</code>. For IID source symbols and one channel use per source symbol, data processing and capacity imply <code>H(V) &lt;= C + Hb(Pb)+Pb*log2(a-1)</code>. Thus H(V)&gt;C excludes Pb tending to zero. For stationary sources replace H(V) by entropy rate; unequal source/channel use ratios change the capacity term accordingly. Actual code comparisons show both BER and BLER.</td>
+</tr>
+<tr>
+<td>3, infinite distortion</td>
+<td>Only errors 1→0 are permitted. If their joint mass is D, the allowed reconstruction kernel yields <code>R(D)=Hb(1/2-D)-(1/2)*Hb(2D)</code> for 0&lt;=D&lt;=1/2, and zero above 1/2. The certified solver uses exactly zero forbidden-transition probabilities and matches this analytic function.</td>
+</tr>
+<tr>
+<td>4, row offsets</td>
+<td>For every reconstruction kernel, <code>E[d']=E[d]-sum p_i*w_i</code>, while MI is unchanged. The feasible sets are identical after shifting the constraint, hence <code>R'(D)=R(D+E[w])</code>. Choosing w_i as the row minimum sets each row's minimum to zero when it is finite. No simulated optimization is needed to prove this identity.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="beyond-the-sheets">Beyond the sheets</h2>
+<table>
+<thead>
+<tr>
+<th>Source concept</th>
+<th>Practical implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cover–Thomas chapters 2–5</td>
+<td>Information algebra, IID AEP, stationary sources, prefix/arithmetic/LZ coding, real code and genomic corpora.</td>
+</tr>
+<tr>
+<td>Chapters 8–10</td>
+<td>Certified finite-channel capacity; actual Hamming, convolutional, Polar and LDPC codes; BPSK information; Gaussian water filling and normal approximations with explicit limits.</td>
+</tr>
+<tr>
+<td>Chapter 12 and Stanford types notes</td>
+<td>Exact rare-event probabilities, tilted importance sampling, method-of-types bounds, randomized Neyman–Pearson tests and Stein convergence.</td>
+</tr>
+<tr>
+<td>Chapter 13 and Stanford separation notes</td>
+<td>Certified discrete rate–distortion, quantized Gaussian sources, real scalar streams, equal-use analog/digital comparison, traditional/learned image bitstreams.</td>
+</tr>
+<tr>
+<td>Further statistical learning</td>
+<td>KSG/Gaussian/histogram MI estimation; held-out MINE-style DV and InfoNCE; discrete information bottleneck with restart diagnostics.</td>
+</tr>
+</tbody>
+</table>
+<p>Gambling, Kolmogorov complexity and general multiuser network regions are not implemented as if a short simulation established their theorems. They are honest future extensions. The practical scope concentrates on reproducible compression, communication, estimation and optimization.</p></body></html>

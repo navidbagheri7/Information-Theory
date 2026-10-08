@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "validator_sha256": "e0a3041a98274082cff8ff0c23fdbd0c5292faeeec8e441975f49ae5ab65dca3",
+  "source_archive": {
+    "file": "information_theory_lab-1.0.0.tar.gz",
+    "sha256": "d6f8ccdf71563bf239e6a6d3b6957a057caecaeb59776e5831686484b9865bb8",
+    "bytes": 244108855
+  },
+  "wheel": {
+    "file": "information_theory_lab-1.0.0-py3-none-any.whl",
+    "sha256": "00137ee31996315f8dd86172b46663f597f84f972ec0a6cb6e0421538146fc68",
+    "bytes": 128472
+  },
+  "public_files_identical_to_checkout": 3815,
+  "public_inventory_sha256": "aabc16ec2b482f4d9ead0348ea17a511bbbe5ebc514fa06ab2349f7338b418e4",
+  "installed_runtime_resources_verified": 22,
+  "source_archive_tests_passed": 48,
+  "source_archive_notebooks": 12,
+  "source_archive_code_cells": 60,
+  "source_and_wheel_quick_protocol": "passed",
+  "installed_wheel_neural_cpu_and_actual_image_decode": "passed",
+  "execution_environment": "Project interpreter with scientific dependencies already installed; offline wheel --no-deps install into an isolated target; asserted source/archive import identities. Not a fresh dependency-resolution test.",
+  "receipt_excluded_from_archive": "Avoids an archive/self-hash cycle; receipt is published in the checkout.",
+  "private_logs_directory": ".local/release_verify/check-s2_oh7gd"
+}

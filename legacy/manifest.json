@@ -1,0 +1,61 @@
+{
+  "source_materials": [
+    {
+      "filename": "Elements_of_Information_Theory_Elements.pdf",
+      "pages": 563,
+      "bytes": 49363267,
+      "sha256": "b85b9587f47a194d9518fe603a806dae3c4a5f479ab7d427e3cfa5ac64e1aa70",
+      "extracted_chars": 1402982,
+      "extraction_pages": "all; PyMuPDF extraction",
+      "private_path": "legacy/originals/Elements_of_Information_Theory_Elements.pdf"
+    },
+    {
+      "filename": "Stanford.pdf",
+      "pages": 75,
+      "bytes": 2408986,
+      "sha256": "004446a62afa0b433b58ce58109b26673deb9fbec5b3da1efeb14485d0ac8926",
+      "extracted_chars": 149046,
+      "extraction_pages": "all; PyMuPDF extraction",
+      "private_path": "legacy/originals/Stanford.pdf"
+    },
+    {
+      "filename": "exercise_sheet1.pdf",
+      "pages": 2,
+      "bytes": 144118,
+      "sha256": "e945a87e032e974ef2d14d9a95f3324eaf31ddded471b5814ba607d7f1ef210a",
+      "extracted_chars": 3001,
+      "extraction_pages": "all; PyMuPDF extraction",
+      "private_path": "legacy/originals/exercise_sheet1.pdf"
+    },
+    {
+      "filename": "exercise_sheet2.pdf",
+      "pages": 2,
+      "bytes": 146192,
+      "sha256": "133d1a3643a6c2fca5dec30b672fd9b2ada5f203200ef52f648c2ad560422a73",
+      "extracted_chars": 4956,
+      "extraction_pages": "all; PyMuPDF extraction",
+      "private_path": "legacy/originals/exercise_sheet2.pdf"
+    },
+    {
+      "filename": "exercise_sheet3.pdf",
+      "pages": 2,
+      "bytes": 159423,
+      "sha256": "d5fb59a33cbeb67401fc2939ad767de411a43ebeb1432c05363bb33d45e405a4",
+      "extracted_chars": 5856,
+      "extraction_pages": "all; PyMuPDF extraction",
+      "private_path": "legacy/originals/exercise_sheet3.pdf"
+    },
+    {
+      "filename": "exercise_sheet4.pdf",
+      "pages": 2,
+      "bytes": 141313,
+      "sha256": "68f743653ce677cfda5416859a20b3e68cbc1166cca620447c249cd8255c8708",
+      "extracted_chars": 5038,
+      "extraction_pages": "all; PyMuPDF extraction",
+      "private_path": "legacy/originals/exercise_sheet4.pdf"
+    }
+  ],
+  "course": "Mn908/MICAS, Mich\u00e8le Wigger, 2024; Stanford EE376A, January 2016",
+  "textbook": "Cover and Thomas, Elements of Information Theory, first edition (1991)",
+  "scope": "Supplied reference PDFs remain locally preserved and excluded from Git/distribution. New code and original explanations are published separately."
+}

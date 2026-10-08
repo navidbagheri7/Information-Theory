@@ -1,0 +1,280 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Measured reference results</title><style>body{max-width:1100px;margin:32px auto;padding:0 20px;font:16px/1.65 system-ui;color:#132d48;background:#f8fafc}a{color:#007c88}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:14px;display:block;overflow:auto}th,td{border:1px solid #d7e4ec;padding:10px;vertical-align:top}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf3f7;padding:16px;border-radius:10px}code{font-size:.9em}img{max-width:100%;height:auto}</style></head><body><nav><a href="explorer.html">← Interactive lab</a> · <a href="results.md">Markdown source</a></nav><h1 id="measured-reference-results">Measured reference results</h1>
+<p>The configured protocol contains 569 cases and 1117 measured runs. All tables link to recorded evidence. See <a href="mathematical_contracts.html">measurement contracts</a> for units, assumptions, uncertainty and limits, and <a href="explorer.html">the explorer</a> for field-specific comparisons.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align: right;">Recorded runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Information bottleneck</td>
+<td style="text-align: right;">81</td>
+</tr>
+<tr>
+<td>Channel capacity</td>
+<td style="text-align: right;">51</td>
+</tr>
+<tr>
+<td>Noisy communication</td>
+<td style="text-align: right;">120</td>
+</tr>
+<tr>
+<td>Information estimation</td>
+<td style="text-align: right;">324</td>
+</tr>
+<tr>
+<td>Entropy and dependence</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr>
+<td>Real image compression</td>
+<td style="text-align: right;">96</td>
+</tr>
+<tr>
+<td>Lossless compression</td>
+<td style="text-align: right;">154</td>
+</tr>
+<tr>
+<td>Learned information estimators</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr>
+<td>Scalar quantization</td>
+<td style="text-align: right;">48</td>
+</tr>
+<tr>
+<td>Rate and distortion</td>
+<td style="text-align: right;">90</td>
+</tr>
+<tr>
+<td>Source–channel transmission</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr>
+<td>Sources and typicality</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr>
+<td>Rare events and hypothesis tests</td>
+<td style="text-align: right;">23</td>
+</tr>
+</tbody>
+</table>
+<h2 id="selected-findings">Selected findings</h2>
+<p>These numerical examples show practical behavior; they are not universal method rankings.</p>
+<ul>
+<li>At 0 dB and seven channel uses per Gaussian source symbol, analog MSE is 0.37481; digital Hamming soft-ML MSE is 3.84462, and source-prior posterior-mean MSE is 1.04249. The matched-use power budget makes this a meaningful finite-code comparison.</li>
+<li>For 16 dimensions and correlation 0.95, Gaussian MI is 26.86763 bits. InfoNCE estimates range from 7.99554 to 7.99699 bits across three seeds, approaching the 8-bit batch ceiling rather than the truth. MINE-style estimates and strong Gaussian/KSG baselines are available alongside this result.</li>
+<li>At binomial blocklength 500, naive simulation observes 0 tail hits in 10000 trials while the exact natural-log probability is -79.78167. Importance sampling estimates the same rare probability with reported relative uncertainty.</li>
+</ul>
+<h2 id="image-codec-examples">Image codec examples</h2>
+<p>Four attributed photographs, complete actual containers, RGB8 decoded-pixel metrics, CPU timing medians. Pretrained model weights are shared external inputs and not amortized per image. This small resized set supports a demonstration, not a benchmark or SOTA claim.</p>
+<table>
+<thead>
+<tr>
+<th>Coffee codec</th>
+<th style="text-align: right;">Point</th>
+<th style="text-align: right;">Complete bpp</th>
+<th style="text-align: right;">PSNR dB</th>
+<th style="text-align: right;">MS-SSIM</th>
+<th style="text-align: right;">Decode seconds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avif</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0.37817</td>
+<td style="text-align: right;">29.585</td>
+<td style="text-align: right;">0.96446</td>
+<td style="text-align: right;">0.00644</td>
+</tr>
+<tr>
+<td>avif</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">1.05558</td>
+<td style="text-align: right;">34.415</td>
+<td style="text-align: right;">0.98825</td>
+<td style="text-align: right;">0.00801</td>
+</tr>
+<tr>
+<td>avif</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">2.13761</td>
+<td style="text-align: right;">38.580</td>
+<td style="text-align: right;">0.99481</td>
+<td style="text-align: right;">0.01247</td>
+</tr>
+<tr>
+<td>bmshj2018-factorized</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.15999</td>
+<td style="text-align: right;">26.539</td>
+<td style="text-align: right;">0.91642</td>
+<td style="text-align: right;">0.13094</td>
+</tr>
+<tr>
+<td>bmshj2018-factorized</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.30843</td>
+<td style="text-align: right;">28.456</td>
+<td style="text-align: right;">0.95507</td>
+<td style="text-align: right;">0.14885</td>
+</tr>
+<tr>
+<td>bmshj2018-factorized</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.65348</td>
+<td style="text-align: right;">30.851</td>
+<td style="text-align: right;">0.97883</td>
+<td style="text-align: right;">0.14642</td>
+</tr>
+<tr>
+<td>bmshj2018-hyperprior</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.16764</td>
+<td style="text-align: right;">26.799</td>
+<td style="text-align: right;">0.91979</td>
+<td style="text-align: right;">0.15888</td>
+</tr>
+<tr>
+<td>bmshj2018-hyperprior</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.35124</td>
+<td style="text-align: right;">29.391</td>
+<td style="text-align: right;">0.96006</td>
+<td style="text-align: right;">0.11761</td>
+</tr>
+<tr>
+<td>bmshj2018-hyperprior</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.71712</td>
+<td style="text-align: right;">32.222</td>
+<td style="text-align: right;">0.98280</td>
+<td style="text-align: right;">0.11789</td>
+</tr>
+<tr>
+<td>cheng2020-anchor</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.13932</td>
+<td style="text-align: right;">27.713</td>
+<td style="text-align: right;">0.92808</td>
+<td style="text-align: right;">1.47211</td>
+</tr>
+<tr>
+<td>cheng2020-anchor</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.27799</td>
+<td style="text-align: right;">29.887</td>
+<td style="text-align: right;">0.96172</td>
+<td style="text-align: right;">1.48661</td>
+</tr>
+<tr>
+<td>cheng2020-anchor</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.61719</td>
+<td style="text-align: right;">33.434</td>
+<td style="text-align: right;">0.98405</td>
+<td style="text-align: right;">2.26499</td>
+</tr>
+<tr>
+<td>jpeg</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0.95955</td>
+<td style="text-align: right;">29.538</td>
+<td style="text-align: right;">0.96814</td>
+<td style="text-align: right;">0.00071</td>
+</tr>
+<tr>
+<td>jpeg</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">1.45036</td>
+<td style="text-align: right;">31.408</td>
+<td style="text-align: right;">0.98169</td>
+<td style="text-align: right;">0.00095</td>
+</tr>
+<tr>
+<td>jpeg</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">2.68734</td>
+<td style="text-align: right;">35.105</td>
+<td style="text-align: right;">0.99251</td>
+<td style="text-align: right;">0.00117</td>
+</tr>
+<tr>
+<td>jpeg2000</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">1.19979</td>
+<td style="text-align: right;">30.846</td>
+<td style="text-align: right;">0.96281</td>
+<td style="text-align: right;">0.01160</td>
+</tr>
+<tr>
+<td>jpeg2000</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">2.39811</td>
+<td style="text-align: right;">34.947</td>
+<td style="text-align: right;">0.98443</td>
+<td style="text-align: right;">0.01623</td>
+</tr>
+<tr>
+<td>jpeg2000</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4.79883</td>
+<td style="text-align: right;">41.314</td>
+<td style="text-align: right;">0.99641</td>
+<td style="text-align: right;">0.02493</td>
+</tr>
+<tr>
+<td>mbt2018-mean</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.15592</td>
+<td style="text-align: right;">26.808</td>
+<td style="text-align: right;">0.92029</td>
+<td style="text-align: right;">0.12452</td>
+</tr>
+<tr>
+<td>mbt2018-mean</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.33105</td>
+<td style="text-align: right;">29.587</td>
+<td style="text-align: right;">0.96042</td>
+<td style="text-align: right;">0.12407</td>
+</tr>
+<tr>
+<td>mbt2018-mean</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.72298</td>
+<td style="text-align: right;">33.431</td>
+<td style="text-align: right;">0.98368</td>
+<td style="text-align: right;">0.22090</td>
+</tr>
+<tr>
+<td>webp</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0.62061</td>
+<td style="text-align: right;">30.022</td>
+<td style="text-align: right;">0.96284</td>
+<td style="text-align: right;">0.00150</td>
+</tr>
+<tr>
+<td>webp</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">0.91976</td>
+<td style="text-align: right;">31.847</td>
+<td style="text-align: right;">0.97517</td>
+<td style="text-align: right;">0.00198</td>
+</tr>
+<tr>
+<td>webp</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">1.72363</td>
+<td style="text-align: right;">34.884</td>
+<td style="text-align: right;">0.98733</td>
+<td style="text-align: right;">0.00198</td>
+</tr>
+</tbody>
+</table>
+<p>All scalar metrics are in <a href="comparison.csv">comparison.csv</a>, full row/asset associations in <a href="results.json">results.json</a>, and independent validation in <a href="reference_validation.json">reference_validation.json</a>. Exact numeric quality settings differ between codec families; compare rate and decoded quality.</p></body></html>

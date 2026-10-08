@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "config": {
+    "family": "neural",
+    "id": "mine_dv_d16_r95",
+    "method": "mine_dv",
+    "dimension": 16,
+    "correlation": 0.95,
+    "train_size": 8192,
+    "validation_size": 4096,
+    "test_size": 4096,
+    "batch_size": 256,
+    "steps": 1500,
+    "learning_rate": 0.001,
+    "validate_every": 100,
+    "width": 128
+  },
+  "seed": 41,
+  "metrics": {
+    "estimate_bits": 11.56055271521179,
+    "true_bits": 26.867631767299805,
+    "validation_bits": 14.525451064414197,
+    "selected_step": 1400,
+    "fit_seconds": 4.954090925864875,
+    "device": "cuda:0",
+    "batch_ceiling_bits": null,
+    "scope": "MINE-style bounded DV critic with EMA gradient normalization, or separable InfoNCE critic. Independent train/validation/test draws; validation-only checkpoint selection. Finite empirical estimates are not certified bounds and are not clipped to the known truth."
+  },
+  "artifacts": {
+    "data.npz": "9e43d25f8c6d85f720fb3f6460983e70542d1328a55b20a0a8270d0640304c96",
+    "model.npz": "0ebcfbac1421c5aef47b6697028a5a5edaa6a2c267dca47f277e2a62a57f1130"
+  },
+  "python": "3.10.20",
+  "platform": "Linux-5.15.0-91-generic-x86_64-with-glibc2.35",
+  "versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.2",
+    "matplotlib": "3.10.9",
+    "Pillow": "12.2.0",
+    "zstandard": "0.25.0",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "compressai": "1.2.8",
+    "scikit-image": "0.25.2",
+    "pytorch-msssim": "1.0.0"
+  },
+  "source_sha256": {
+    "__init__.py": "c9e334d8a20202cfe880c9ee53af294e262e5175dabd6ae5208d5b1a799ec43c",
+    "artifacts.py": "aeb82b889f0de0ce1482ccebcf978394d158929ea64d6bc827ed7df5d136dc24",
+    "bottleneck.py": "3072c296644058f05ff0f3f3fe4dbdbc12c0900f427426a896b0752621ced458",
+    "channels.py": "0f7b0c7ea74f462527b3ecfc0b7f411c2c3f92683ead67ee55b0b84694e5ef88",
+    "cli.py": "46e8bcf4f6248d13f7e5ae4b2041e42f288161f465498fb6e0b8dfe89ae963bd",
+    "coding.py": "eb60e2df04ec9d65002c96a0297e343acf8120f2304e3195b324621978aa08ee",
+    "estimators.py": "3f57a951fac625a88de07d062417356fbe5c609f472990791d0caff28bae28c1",
+    "experiments.py": "93621e0f3bcda57a0305ce25cfd57f070c84e9e4cc098b18653c08101516561d",
+    "images.py": "ea2ff77d83693d86126d8f39153e7b8de3ab02129ee21124f9a4f84cc44116be",
+    "information.py": "efe21912c0e8dfce65deceafa53e1bbdaf8a680297606f8f97904c5d0bd29c3d",
+    "lossless.py": "015f9bc228d3dc311e7d6a6cb46faadab57dfa8565c21d4d8cbd48b1253a27bd",
+    "neural.py": "98caeb20680f4b3b57f1713d3a2ee86c74b8262b23cfbcb36150c27cae1cce1a",
+    "prepare.py": "d42a90b803e254b3667d019ec354c8a200c7450f0183dde2611a8802a900e4b1",
+    "quantization.py": "a425b48f052053901fea45ce67c58c7be179fca006ff55e300adbf1273b04a12",
+    "rate_distortion.py": "0b599bb750903a14fed819b14cdedb6b008b009df83d7a848475426b317b6492",
+    "sources.py": "29e93b1f968c9c4e01e86a531f18f53480a2599cae02935649ffc9fe06130326",
+    "statistics.py": "536827da68ac4862012ef777c86c00b17b60092a5f70ce30a11a82650bf1e2b9"
+  },
+  "resource_sha256": {
+    "default_configs/corpora/ecoli_excerpt.txt": "68a9ddaa3bc9f692a2da1e121d63111b840c65274650e21134af722617b155de",
+    "default_configs/corpora/manifest.json": "0202a0c045bb73f59c9f49e85a8576cc1f67a474b32f07ad1908f274fe7812e3",
+    "default_configs/corpora/owned_code.txt": "5077857f377ff7ee6087c78d8d54f65bdd73d2ee81cf3e7e1c3b4c45ed47552d",
+    "default_configs/quick.json": "79070085915a95ea045a114987107ef7b435fc8589e43bf6c954cfa462f82941",
+    "default_configs/reference.json": "f8653ed5038b660845d5a7adf9497137efd0dc0f045e39f09eba28c19ead2ef0"
+  },
+  "information_unit": "bits; natural-log optimization multipliers explicitly labelled"
+}

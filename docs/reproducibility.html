@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Reproduce the experiments</title><style>body{max-width:1100px;margin:32px auto;padding:0 20px;font:16px/1.65 system-ui;color:#132d48;background:#f8fafc}a{color:#007c88}h1,h2,h3{line-height:1.25}table{border-collapse:collapse;font-size:14px;display:block;overflow:auto}th,td{border:1px solid #d7e4ec;padding:10px;vertical-align:top}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf3f7;padding:16px;border-radius:10px}code{font-size:.9em}img{max-width:100%;height:auto}</style></head><body><nav><a href="explorer.html">← Interactive lab</a> · <a href="reproducibility.md">Markdown source</a></nav><h1 id="reproduce-the-experiments">Reproduce the experiments</h1>
+<p>The repository includes measured reference records, portable arrays/streams, source hashes, configurations and rendered evidence. Opening the explorer only reads those recorded results. It does not train a network in the browser or require a GPU.</p>
+<h2 id="install-and-try-the-core">Install and try the core</h2>
+<p>Use Python 3.10 or newer in your own environment:</p>
+<pre><code class="language-bash">python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e '.[dev]'
+information-lab run --config configs/quick.json --output results/smoke
+pytest
+</code></pre>
+<p>The core quick protocol requires no downloaded model, dataset or GPU. Two attributed compression fixtures are bundled. Installing the wheel also provides <code>information-lab init my-configs</code> to export both configurations outside a source checkout.</p>
+<p>For every optional example:</p>
+<pre><code class="language-bash">python -m pip install -e '.[dev,neural,images,notebooks,browser]'
+export INFORMATION_LAB_DATA=&quot;$HOME/.cache/information-lab&quot;
+information-lab prepare --project-root . --data-root &quot;$INFORMATION_LAB_DATA&quot; --models
+</code></pre>
+<p>Preparation fetches the versioned NCBI reference with its official checksum, makes the four attributed images, and downloads the twelve explicitly configured official model checkpoints. All large downloads live under the chosen data root. The owner's reference cache is <code>/data/navid.bagheri-shouraki/ML_data/information</code>; it is a local choice, never required on another computer. Original course PDFs are excluded from Git and source distributions.</p>
+<h2 id="full-reference-protocol">Full reference protocol</h2>
+<p>Choose a fresh output directory when source or input fingerprints differ:</p>
+<pre><code class="language-bash">information-lab run --config configs/reference.json --output results/my-run \
+  --data-root &quot;$INFORMATION_LAB_DATA&quot; --family coding
+information-lab run --config configs/reference.json --output results/my-run \
+  --data-root &quot;$INFORMATION_LAB_DATA&quot; --family neural --device cuda:0
+information-lab run --config configs/reference.json --output results/my-run \
+  --data-root &quot;$INFORMATION_LAB_DATA&quot; --family images --device cpu
+</code></pre>
+<p>Omit <code>--family</code> to run every family. Repeat it to select several families. Omit <code>--device</code> for CPU; all neural examples also support CPU. The reference uses seeds 41/42/43 for stochastic cases and one deterministic record where repeated seeds would be meaningless. The saved JSON specifies every grid point and training budget. Three separate neural workers used one seed per L40S; they did not change the protocol or data splits.</p>
+<p>Use <code>OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1</code> for controlled CPU timing. Set <code>CUBLAS_WORKSPACE_CONFIG=:4096:8</code> before GPU startup. PyTorch deterministic algorithms and disabled TF32 are used by neural training. Exact floating-point identity across GPU/CPU, CUDA versions or library builds is not promised; explicit CPU inference tolerances are audited. Codec timing is local wall time and not a hardware-independent ranking.</p>
+<p>Each case stores <code>run.json</code>, <code>data.npz</code>, and relevant real streams/model arrays/decoded images. Records include full source and dependency provenance and SHA256 hashes of artifacts. Completed records are resumed only when their configuration and fingerprints match and all saved artifact digests verify. A changed or partial run is not silently declared complete. Family workers write separate index files to avoid manifest races.</p>
+<p>Resuming preserves the original device and dependency provenance. Changing <code>--device</code> or installed library versions does not force a completed experiment to run again: use a fresh output directory for a hardware or dependency comparison. <code>requirements-reference.txt</code> records the actual tested versions; its CUDA wheels require the corresponding official PyTorch wheel index. The ordinary installation instructions use the supported version ranges instead.</p>
+<h2 id="inspect-and-audit">Inspect and audit</h2>
+<pre><code class="language-bash">python scripts/validate_reference.py --data-root &quot;$INFORMATION_LAB_DATA&quot;
+python scripts/build_report.py
+python scripts/build_explorer.py
+python scripts/execute_notebooks.py
+python scripts/audit_explorer.py
+</code></pre>
+<p>The independent reference audit reconstructs every configured metric or invariant, brute-forces KSG distances independently of its tree implementation, checks exact/dual analytic results, loads portable critics on CPU, and decodes the stored bytes using the external cached models. Original/decoded pixel arrays must match the displayed images. The browser audit exercises every enabled finite selector combination, slider endpoints/midpoints, applicable comparisons, links and images; it separately checks live numerical formulas and mobile rendering.</p>
+<p>Reference arrays intentionally retain the detailed evidence behind the figures. The wheel contains the small runtime and fixtures; the source distribution also contains measured reference evidence and notebooks. Generated release checks document the exact archive contents and import identity.</p>
+<p>Run <code>python scripts/verify_release.py --data-root "$INFORMATION_LAB_DATA"</code> to build and check both distributions, execute the source-archive tests and notebooks, and verify installed-wheel inference. This check needs the optional development/notebook/image dependencies and already prepared model cache. <code>docs/release_artifacts.json</code> is written afterward and deliberately excluded from the source archive: an archive cannot include a receipt containing its own final hash. It remains available in the repository checkout.</p></body></html>

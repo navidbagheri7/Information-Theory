@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "notebooks": 12,
+  "code_cells": 60,
+  "executor_sha256": "388b99c4b05be18bc4e7ae1942698beca578b686eb279c94a904a67886dde25f",
+  "runtime": {
+    "python": "3.10.20",
+    "platform": "Linux-5.15.0-91-generic-x86_64-with-glibc2.35",
+    "versions": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.7.2",
+      "matplotlib": "3.10.9",
+      "Pillow": "12.2.0",
+      "zstandard": "0.25.0",
+      "torch": "2.7.1+cu128",
+      "torchvision": "0.22.1+cu128",
+      "compressai": "1.2.8",
+      "scikit-image": "0.25.2",
+      "pytorch-msssim": "1.0.0"
+    },
+    "source_sha256": {
+      "__init__.py": "c9e334d8a20202cfe880c9ee53af294e262e5175dabd6ae5208d5b1a799ec43c",
+      "artifacts.py": "aeb82b889f0de0ce1482ccebcf978394d158929ea64d6bc827ed7df5d136dc24",
+      "bottleneck.py": "3072c296644058f05ff0f3f3fe4dbdbc12c0900f427426a896b0752621ced458",
+      "channels.py": "0f7b0c7ea74f462527b3ecfc0b7f411c2c3f92683ead67ee55b0b84694e5ef88",
+      "cli.py": "46e8bcf4f6248d13f7e5ae4b2041e42f288161f465498fb6e0b8dfe89ae963bd",
+      "coding.py": "eb60e2df04ec9d65002c96a0297e343acf8120f2304e3195b324621978aa08ee",
+      "estimators.py": "3f57a951fac625a88de07d062417356fbe5c609f472990791d0caff28bae28c1",
+      "experiments.py": "93621e0f3bcda57a0305ce25cfd57f070c84e9e4cc098b18653c08101516561d",
+      "images.py": "ea2ff77d83693d86126d8f39153e7b8de3ab02129ee21124f9a4f84cc44116be",
+      "information.py": "efe21912c0e8dfce65deceafa53e1bbdaf8a680297606f8f97904c5d0bd29c3d",
+      "lossless.py": "015f9bc228d3dc311e7d6a6cb46faadab57dfa8565c21d4d8cbd48b1253a27bd",
+      "neural.py": "98caeb20680f4b3b57f1713d3a2ee86c74b8262b23cfbcb36150c27cae1cce1a",
+      "prepare.py": "d42a90b803e254b3667d019ec354c8a200c7450f0183dde2611a8802a900e4b1",
+      "quantization.py": "a425b48f052053901fea45ce67c58c7be179fca006ff55e300adbf1273b04a12",
+      "rate_distortion.py": "0b599bb750903a14fed819b14cdedb6b008b009df83d7a848475426b317b6492",
+      "sources.py": "29e93b1f968c9c4e01e86a531f18f53480a2599cae02935649ffc9fe06130326",
+      "statistics.py": "536827da68ac4862012ef777c86c00b17b60092a5f70ce30a11a82650bf1e2b9"
+    },
+    "resource_sha256": {
+      "default_configs/corpora/ecoli_excerpt.txt": "68a9ddaa3bc9f692a2da1e121d63111b840c65274650e21134af722617b155de",
+      "default_configs/corpora/manifest.json": "0202a0c045bb73f59c9f49e85a8576cc1f67a474b32f07ad1908f274fe7812e3",
+      "default_configs/corpora/owned_code.txt": "5077857f377ff7ee6087c78d8d54f65bdd73d2ee81cf3e7e1c3b4c45ed47552d",
+      "default_configs/quick.json": "79070085915a95ea045a114987107ef7b435fc8589e43bf6c954cfa462f82941",
+      "default_configs/reference.json": "f8653ed5038b660845d5a7adf9497137efd0dc0f045e39f09eba28c19ead2ef0"
+    },
+    "information_unit": "bits; natural-log optimization multipliers explicitly labelled"
+  },
+  "records": [
+    {
+      "file": "notebooks/00_entropy_and_dependence.ipynb",
+      "sha256": "5d665f8198465d39af6032ab5f82c310c881b502fa8f372751957e936fa8f0a0",
+      "code_cells": 5,
+      "seconds": 4.029171292670071
+    },
+    {
+      "file": "notebooks/01_sources_and_typicality.ipynb",
+      "sha256": "ddb46acd183bebbfd61a800f4692438f38e98a808ef9b0477e5fba19fe9b7c62",
+      "code_cells": 5,
+      "seconds": 3.6251989789307117
+    },
+    {
+      "file": "notebooks/02_real_lossless_streams.ipynb",
+      "sha256": "adce9043ad57af082b80dc3ac4168b7675184ae747945fabebe573fc990da7be",
+      "code_cells": 5,
+      "seconds": 2.6794254975393414
+    },
+    {
+      "file": "notebooks/03_capacity_and_allocation.ipynb",
+      "sha256": "d5d13894ae257249cbb4727d4096d8640ecdc39827fa1ffdf1bdf45a298008a7",
+      "code_cells": 5,
+      "seconds": 3.1472846502438188
+    },
+    {
+      "file": "notebooks/04_noisy_message_coding.ipynb",
+      "sha256": "391ca902b4c49b507e85dcf8e364022bbf65275ad231da7f7dd84dedda11f3f0",
+      "code_cells": 5,
+      "seconds": 3.372340955771506
+    },
+    {
+      "file": "notebooks/05_rate_distortion_certificates.ipynb",
+      "sha256": "7b9f03f7deaab658b0b5404c2977d9c43fbdf3ff9a2f9366e12256b5125b990b",
+      "code_cells": 5,
+      "seconds": 2.667829556390643
+    },
+    {
+      "file": "notebooks/06_quantization_and_separation.ipynb",
+      "sha256": "b6772825a1e259805e443ac2844f7ba38188225c7360c61816aae33d45c22b8e",
+      "code_cells": 5,
+      "seconds": 3.077288134023547
+    },
+    {
+      "file": "notebooks/07_rare_events_and_testing.ipynb",
+      "sha256": "3daa7cd93cf6f112facd487c2110a0f45a8a3802aa64217a7ae47d649e47ec6e",
+      "code_cells": 5,
+      "seconds": 3.062976115383208
+    },
+    {
+      "file": "notebooks/08_classical_information_estimation.ipynb",
+      "sha256": "2388e0cf95766edacc3fce28da4306905e0f70bc4bd93dfa788d01d0b3aca58c",
+      "code_cells": 5,
+      "seconds": 3.02947193197906
+    },
+    {
+      "file": "notebooks/09_neural_information_bounds.ipynb",
+      "sha256": "0da407d531e105e5d3d45b807fcfa1a8e0f4f93804c26d024b87fdeda4b7b7ce",
+      "code_cells": 5,
+      "seconds": 4.54569841735065
+    },
+    {
+      "file": "notebooks/10_information_bottleneck.ipynb",
+      "sha256": "e2c7202ce9de2b2f1cbda452edcccedd8981978cdc5e221dbbe60d5a04019bc1",
+      "code_cells": 5,
+      "seconds": 3.3017146084457636
+    },
+    {
+      "file": "notebooks/11_actual_image_compression.ipynb",
+      "sha256": "c1f7cc6222a07886701114a0e74eb1428c0f1afee7bdfe136e32e97cd2c43681",
+      "code_cells": 5,
+      "seconds": 4.819675460457802
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "runs": 1117,
+  "explorer_sha256": "ae7ccec8e2eb5746f55cf1397d9442f50b766d3c7f7f9b62dd675cf23488a864",
+  "results_sha256": "ad36d3e9be78ca55d46900fa0a1f0ba574667bb162224edd0c5672cb6711f158",
+  "builder_sha256": "dd27a812501067684e37061d1b5ae2e229ecc05b6c9fa7344a6c8d25b5d4555e",
+  "template_sha256": "a5f41d685d902a8775982cc4103a6087f53a393dec50e840d1859261df353816",
+  "scope": "Offline recorded evidence. Every finite selection is bound to an actual run, decoded image or numerical plot. Live binary formulas and photo reveal are separate from recorded experiments."
+}
