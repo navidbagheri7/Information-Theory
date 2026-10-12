@@ -24,10 +24,10 @@ browser = ["playwright>=1.50"]
 information-lab = "information_lab.cli:main"
 
 [project.urls]
-Repository = "https://github.com/navidbagheri7/information-theory-lab"
-Documentation = "https://github.com/navidbagheri7/information-theory-lab#readme"
-Demo = "https://navidbagheri7.github.io/information-theory-lab/"
-Issues = "https://github.com/navidbagheri7/information-theory-lab/issues"
+Repository = "https://github.com/navidbagheri7/Information-Theory"
+Documentation = "https://github.com/navidbagheri7/Information-Theory#readme"
+Demo = "https://navidbagheri7.github.io/Information-Theory/"
+Issues = "https://github.com/navidbagheri7/Information-Theory/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

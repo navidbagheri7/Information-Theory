@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this educational and experimental software, please cite it."
 type: software
-title: "Information, Compression and Communication Lab"
+title: "Information Theory"
 version: 1.0.0
 date-released: 2026-10-08
 authors:
@@ -16,5 +16,5 @@ keywords:
   - rate distortion
   - information estimation
   - learned image compression
-repository-code: "https://github.com/navidbagheri7/information-theory-lab"
-url: "https://navidbagheri7.github.io/information-theory-lab/"
+repository-code: "https://github.com/navidbagheri7/Information-Theory"
+url: "https://navidbagheri7.github.io/Information-Theory/"

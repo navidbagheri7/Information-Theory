@@ -1,6 +1,6 @@
-# Information, Compression & Communication Lab
+# Information Theory
 
-[Interactive demo](https://navidbagheri7.github.io/information-theory-lab/) · [GitHub repository](https://github.com/navidbagheri7/information-theory-lab) · [CI checks](https://github.com/navidbagheri7/information-theory-lab/actions)
+[Interactive demo](https://navidbagheri7.github.io/Information-Theory/) · [GitHub repository](https://github.com/navidbagheri7/Information-Theory) · [CI checks](https://github.com/navidbagheri7/Information-Theory/actions)
 
 A reproducible laboratory built from information-theory coursework: certified optimization, actual encoders and decoders, noisy communication, information estimation, and traditional/learned image compression. Theory is connected to concrete outputs and controlled comparisons, with configurations, numerical arrays, real bitstreams and independent checks.
 
