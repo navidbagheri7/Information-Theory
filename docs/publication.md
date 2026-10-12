@@ -1,6 +1,6 @@
 # GitHub publication and interactive demo
 
-Repository: [navidbagheri7/information-theory-lab](https://github.com/navidbagheri7/Information-Theory). Interactive explorer: [https://navidbagheri7.github.io/Information-Theory/](https://navidbagheri7.github.io/Information-Theory/).
+Repository: [navidbagheri7/Information-Theory](https://github.com/navidbagheri7/Information-Theory). Interactive explorer: [https://navidbagheri7.github.io/Information-Theory/](https://navidbagheri7.github.io/Information-Theory/).
 
 The repository contains authored English code, executed notebooks and measured evidence. The numerical comparisons and documented limitations remain unchanged by publication. Private course originals, local environments, cached datasets and large training checkpoints remain outside Git history.
 
