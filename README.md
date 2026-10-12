@@ -1,5 +1,7 @@
 # Information, Compression & Communication Lab
 
+[Interactive demo](https://navidbagheri7.github.io/information-theory-lab/) · [GitHub repository](https://github.com/navidbagheri7/information-theory-lab) · [CI checks](https://github.com/navidbagheri7/information-theory-lab/actions)
+
 A reproducible laboratory built from information-theory coursework: certified optimization, actual encoders and decoders, noisy communication, information estimation, and traditional/learned image compression. Theory is connected to concrete outputs and controlled comparisons, with configurations, numerical arrays, real bitstreams and independent checks.
 
 [Open the interactive lab](docs/explorer.html) · [Measured results](docs/results.md) · [Executed notebooks](notebooks/README.md) · [Course coverage and proofs](docs/course_coverage.md)
@@ -103,4 +105,4 @@ The project extends Cover–Thomas and the supplied Stanford/Wigger materials in
 
 Original code and explanations are MIT licensed. [Sources and credits](docs/references.md) describe images, sequence/code fixtures, external model provenance and third-party ownership. Cite the software using [CITATION.cff](CITATION.cff).
 
-This repository is prepared locally. Publishing remains a manual owner action. After uploading it to GitHub, enable Pages with **GitHub Actions** as the build source and manually run the included Pages workflow; it stages only public preview content. No local script pushes or deploys the repository.
+GitHub Pages uses **GitHub Actions** as its build source. The included manually triggered Pages workflow stages only committed public files. Original course materials, local environments, caches and downloaded model weights are excluded from Git history and the website.
